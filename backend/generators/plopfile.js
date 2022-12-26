@@ -23,6 +23,18 @@ module.exports = function (plop) {
         actions: [...reposittoriesActions],
     });
 
+    plop.setGenerator("useCases", {
+        description: "Generate useCases",
+        prompts: [
+            {
+                type: "input",
+                name: "name",
+                message: "What is the name of the useCase?",
+            },
+        ],
+        actions: [...useCasesActions],
+    });
+
     plop.setGenerator("test", {
         description: "Generate a new test",
         prompts: [
@@ -80,5 +92,24 @@ const reposittoriesActions = [
         type: "add",
         path: "../src/slices/{{camelCase name}}/repositories/contracts/index.ts",
         templateFile: "./templates/repositories/contracts/index.ts.hbs",
+    },
+
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/repositories/index.ts",
+        templateFile: "./templates/repositories/index.ts.hbs",
+    },
+];
+
+const useCasesActions = [
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/add{{pascalCase name}}/add{{pascalCase name}}UseCase.ts",
+        templateFile: "./templates/useCases/addDomain/addDomainUseCase.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/add{{pascalCase name}}/add{{pascalCase name}}UseCase.spec.ts",
+        templateFile: "./templates/useCases/addDomain/addDomainUseCase.spec.ts.hbs",
     },
 ];
