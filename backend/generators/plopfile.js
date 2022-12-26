@@ -145,6 +145,23 @@ const useCasesActions = [
     },
     {
         type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/load{{pascalCase name}}ByPage/Load{{pascalCase name}}ByPageUseCase.ts",
+        templateFile:
+            "./templates/useCases/loadDomainByPage/LoadDomainByPageUseCase.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/load{{pascalCase name}}ByPage/Load{{pascalCase name}}ByPageUseCase.spec.ts",
+        templateFile:
+            "./templates/useCases/loadDomainByPage/LoadDomainByPageUseCase.spec.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/load{{pascalCase name}}ByPage/index.ts",
+        templateFile: "./templates/useCases/loadDomainByPage/index.ts.hbs",
+    },
+    {
+        type: "add",
         path: "../src/slices/{{camelCase name}}/useCases/index.ts",
         templateFile: "./templates/useCases/index.ts.hbs",
     },

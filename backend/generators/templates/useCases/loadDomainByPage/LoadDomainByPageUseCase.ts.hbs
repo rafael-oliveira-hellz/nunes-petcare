@@ -1,0 +1,14 @@
+import { Query } from "@/application/@types";
+import { {{pascalCase name}}PaginatedData } from "@/slices/{{camelCase name}}/entities";
+import { Load{{pascalCase name}}ByPageRepository } from "@/slices/{{camelCase name}}/repositories";
+
+export type load{{pascalCase name}}ByPage = (query: Query) => Promise<{{pascalCase name}}PaginatedData | null>;
+
+export type load{{pascalCase name}}ByPageSignature = (
+    load{{pascalCase name}}ByPage: Load{{pascalCase name}}ByPageRepository
+) => load{{pascalCase name}}ByPage;
+
+export const load{{pascalCase name}}Usecase: load{{pascalCase name}}ByPageSignature =
+    (load{{pascalCase name}}ByPageRepository: Load{{pascalCase name}}ByPageRepository) => (query: Query) => {
+        return load{{pascalCase name}}ByPageRepository.loadByPage(query);
+    };
