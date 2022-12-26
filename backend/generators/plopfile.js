@@ -95,6 +95,12 @@ const reposittoriesActions = [
     },
     {
         type: "add",
+        path: "../src/slices/{{camelCase name}}/repositories/contracts/Load{{pascalCase name}}ByPageRepository.ts",
+        templateFile:
+            "./templates/repositories/contracts/LoadDomainByPageRepository.ts.hbs",
+    },
+    {
+        type: "add",
         path: "../src/slices/{{camelCase name}}/repositories/contracts/index.ts",
         templateFile: "./templates/repositories/contracts/index.ts.hbs",
     },
