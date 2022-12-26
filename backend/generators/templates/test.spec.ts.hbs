@@ -1,0 +1,43 @@
+import MockDate from 'mockdate';
+import {mock, MockProxy} from 'jest-mock-extended';
+
+describe('Test', () => {
+    let testInstance: any;
+    let anyDependency: MockProxy<any>;
+
+    beforeAll(async () => {
+        MockDate.set(new Date());
+        anyDependency = mock<any>();
+
+        // sync mock implementation
+        // anyDependency.mockReturnValue('expected');
+
+        // async mock implementation
+        // anyDependency.mockResolvedValue('expected');
+    });
+
+    beforeEach(() => {
+        // testInstance = new Test(anyDependency);
+        // or
+        // testInstance = anyFunction(anyDependency);
+    });
+
+    afterAll(async () => {
+        MockDate.reset();
+    });
+
+    it('should do something', async () => {
+        // Arrange
+        const expected = {some: 'value'};
+
+        // Act
+        const actual = testInstance.doSomething();
+
+        // Assert
+        expect(expected).toBeTruthy();
+
+        // or
+
+        // expect(actual).toEqual(expected);
+    });
+});
