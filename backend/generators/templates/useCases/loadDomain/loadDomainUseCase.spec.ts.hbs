@@ -1,4 +1,4 @@
-import { {{pascalCase name}}Entity } from "@/slices/{{camelCase name}}/entities";
+import { Query } from "@/application/@types";
 import { {{camelCase name}}EntityMock } from "@/slices/{{camelCase name}}/entities/{{pascalCase name}}Entity.spec";
 import { Load{{pascalCase name}}Repository } from "@/slices/{{camelCase name}}/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -6,12 +6,20 @@ import MockDate from "mockdate";
 import { load{{pascalCase name}}, load{{pascalCase name}}Usecase } from "./load{{pascalCase name}}UseCase";
 
 describe("load{{pascalCase name}}", () => {
+    let fakeQuery: Query;
     let testInstance: load{{pascalCase name}};
     let load{{pascalCase name}}Repository: MockProxy<Load{{pascalCase name}}Repository>;
 
     beforeAll(async () => {
         MockDate.set(new Date());
         load{{pascalCase name}}Repository = mock();
+
+        fakeQuery = {
+            fields: {
+                name: "name",
+            },
+            options: {},
+        };
 
         load{{pascalCase name}}Repository.load{{pascalCase name}}.mockResolvedValue({{camelCase name}}EntityMock);
     });
@@ -25,17 +33,15 @@ describe("load{{pascalCase name}}", () => {
     });
 
     it("should call load{{pascalCase name}} of load{{pascalCase name}}Repository with correct values", async () => {
-        await testInstance({{camelCase name}}EntityMock);
+        await testInstance(fakeQuery);
 
-        expect(load{{pascalCase name}}Repository.load{{pascalCase name}}).toHaveBeenCalledWith(
-            new {{pascalCase name}}Entity({{camelCase name}}EntityMock)
-        );
+        expect(load{{pascalCase name}}Repository.load{{pascalCase name}}).toHaveBeenCalledWith(fakeQuery);
 
         expect(load{{pascalCase name}}Repository.load{{pascalCase name}}).toHaveBeenCalledTimes(1);
     });
 
-    it("should return a new {{camelCase name}} when load{{pascalCase name}}Repository loads it", async () => {
-        const {{camelCase name}} = await testInstance({{camelCase name}}EntityMock);
+    it("should return a {{camelCase name}} when load{{pascalCase name}}Repository loads it", async () => {
+        const {{camelCase name}} = await testInstance(fakeQuery);
 
         expect({{camelCase name}}).toEqual({{camelCase name}}EntityMock);
     });
@@ -43,7 +49,7 @@ describe("load{{pascalCase name}}", () => {
     it("should return null when load{{pascalCase name}}Repository fails to load", async () => {
         load{{pascalCase name}}Repository.load{{pascalCase name}}.mockResolvedValue(null);
 
-        const {{camelCase name}} = await testInstance({{camelCase name}}EntityMock);
+        const {{camelCase name}} = await testInstance(fakeQuery);
 
         expect({{camelCase name}}).toBeNull();
     });
@@ -51,6 +57,6 @@ describe("load{{pascalCase name}}", () => {
     it("should throw an error when load{{pascalCase name}}Repository throws an error", async () => {
         load{{pascalCase name}}Repository.load{{pascalCase name}}.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance({{camelCase name}}EntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });
 });
