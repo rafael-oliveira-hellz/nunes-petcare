@@ -1,5 +1,5 @@
 export type CategoryData = {
-    _id: string;
+    _id?: string;
     createdById: string;
     name: string;
     active?: boolean;
