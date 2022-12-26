@@ -1,5 +1,5 @@
 export type Query = {
-    fields: unknown;
+    fields?: unknown;
     options?: QueryOptions;
 };
 

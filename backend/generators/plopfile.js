@@ -90,6 +90,11 @@ const reposittoriesActions = [
     },
     {
         type: "add",
+        path: "../src/slices/{{camelCase name}}/repositories/contracts/load{{pascalCase name}}Repository.ts",
+        templateFile: "./templates/repositories/contracts/loadDomainRepository.ts.hbs",
+    },
+    {
+        type: "add",
         path: "../src/slices/{{camelCase name}}/repositories/contracts/index.ts",
         templateFile: "./templates/repositories/contracts/index.ts.hbs",
     },
@@ -116,6 +121,21 @@ const useCasesActions = [
         type: "add",
         path: "../src/slices/{{camelCase name}}/useCases/add{{pascalCase name}}/index.ts",
         templateFile: "./templates/useCases/addDomain/index.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/load{{pascalCase name}}/load{{pascalCase name}}UseCase.ts",
+        templateFile: "./templates/useCases/loadDomain/loadDomainUseCase.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/load{{pascalCase name}}/load{{pascalCase name}}UseCase.spec.ts",
+        templateFile: "./templates/useCases/loadDomain/loadDomainUseCase.spec.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/load{{pascalCase name}}/index.ts",
+        templateFile: "./templates/useCases/loadDomain/index.ts.hbs",
     },
     {
         type: "add",
