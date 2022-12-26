@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2022",  
+    "target": "ES2022",
     "module": "commonjs",
-    "esModuleInterop": true,   
-    "strict": true,    
+    "esModuleInterop": true,
+    "strict": true,
     "skipLibCheck": true ,
     "incremental": true,
     "outDir": "dist",
@@ -23,4 +23,5 @@
   "experimentalDecorators": true,
   },
   "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
