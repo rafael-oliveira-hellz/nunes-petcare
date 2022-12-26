@@ -112,4 +112,14 @@ const useCasesActions = [
         path: "../src/slices/{{camelCase name}}/useCases/add{{pascalCase name}}/add{{pascalCase name}}UseCase.spec.ts",
         templateFile: "./templates/useCases/addDomain/addDomainUseCase.spec.ts.hbs",
     },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/add{{pascalCase name}}/index.ts",
+        templateFile: "./templates/useCases/addDomain/index.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/index.ts",
+        templateFile: "./templates/useCases/index.ts.hbs",
+    },
 ];
