@@ -101,6 +101,11 @@ const reposittoriesActions = [
     },
     {
         type: "add",
+        path: "../src/slices/{{camelCase name}}/repositories/contracts/Delete{{pascalCase name}}Repository.ts",
+        templateFile: "./templates/repositories/contracts/DeleteDomainRepository.ts.hbs",
+    },
+    {
+        type: "add",
         path: "../src/slices/{{camelCase name}}/repositories/contracts/index.ts",
         templateFile: "./templates/repositories/contracts/index.ts.hbs",
     },
