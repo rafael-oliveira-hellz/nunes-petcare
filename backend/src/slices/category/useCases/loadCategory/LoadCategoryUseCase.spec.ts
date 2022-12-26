@@ -3,7 +3,7 @@ import { categoryEntityMock } from "@/slices/category/entities/CategoryEntity.sp
 import { LoadCategoryRepository } from "@/slices/category/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadCategory, loadCategoryUsecase } from "./loadCategoryUseCase";
+import { loadCategory, loadCategoryUsecase } from "./LoadCategoryUseCase";
 
 describe("loadCategory", () => {
     let fakeQuery: Query;

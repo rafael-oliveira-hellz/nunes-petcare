@@ -85,13 +85,13 @@ const entitiesActions = [
 const reposittoriesActions = [
     {
         type: "add",
-        path: "../src/slices/{{camelCase name}}/repositories/contracts/add{{pascalCase name}}Repository.ts",
-        templateFile: "./templates/repositories/contracts/addDomainRepository.ts.hbs",
+        path: "../src/slices/{{camelCase name}}/repositories/contracts/Add{{pascalCase name}}Repository.ts",
+        templateFile: "./templates/repositories/contracts/AddDomainRepository.ts.hbs",
     },
     {
         type: "add",
-        path: "../src/slices/{{camelCase name}}/repositories/contracts/load{{pascalCase name}}Repository.ts",
-        templateFile: "./templates/repositories/contracts/loadDomainRepository.ts.hbs",
+        path: "../src/slices/{{camelCase name}}/repositories/contracts/Load{{pascalCase name}}Repository.ts",
+        templateFile: "./templates/repositories/contracts/LoadDomainRepository.ts.hbs",
     },
     {
         type: "add",
@@ -109,13 +109,13 @@ const reposittoriesActions = [
 const useCasesActions = [
     {
         type: "add",
-        path: "../src/slices/{{camelCase name}}/useCases/add{{pascalCase name}}/add{{pascalCase name}}UseCase.ts",
-        templateFile: "./templates/useCases/addDomain/addDomainUseCase.ts.hbs",
+        path: "../src/slices/{{camelCase name}}/useCases/add{{pascalCase name}}/Add{{pascalCase name}}UseCase.ts",
+        templateFile: "./templates/useCases/addDomain/AddDomainUseCase.ts.hbs",
     },
     {
         type: "add",
-        path: "../src/slices/{{camelCase name}}/useCases/add{{pascalCase name}}/add{{pascalCase name}}UseCase.spec.ts",
-        templateFile: "./templates/useCases/addDomain/addDomainUseCase.spec.ts.hbs",
+        path: "../src/slices/{{camelCase name}}/useCases/add{{pascalCase name}}/Add{{pascalCase name}}UseCase.spec.ts",
+        templateFile: "./templates/useCases/addDomain/AddDomainUseCase.spec.ts.hbs",
     },
     {
         type: "add",
@@ -124,13 +124,13 @@ const useCasesActions = [
     },
     {
         type: "add",
-        path: "../src/slices/{{camelCase name}}/useCases/load{{pascalCase name}}/load{{pascalCase name}}UseCase.ts",
-        templateFile: "./templates/useCases/loadDomain/loadDomainUseCase.ts.hbs",
+        path: "../src/slices/{{camelCase name}}/useCases/load{{pascalCase name}}/Load{{pascalCase name}}UseCase.ts",
+        templateFile: "./templates/useCases/loadDomain/LoadDomainUseCase.ts.hbs",
     },
     {
         type: "add",
-        path: "../src/slices/{{camelCase name}}/useCases/load{{pascalCase name}}/load{{pascalCase name}}UseCase.spec.ts",
-        templateFile: "./templates/useCases/loadDomain/loadDomainUseCase.spec.ts.hbs",
+        path: "../src/slices/{{camelCase name}}/useCases/load{{pascalCase name}}/Load{{pascalCase name}}UseCase.spec.ts",
+        templateFile: "./templates/useCases/loadDomain/LoadDomainUseCase.spec.ts.hbs",
     },
     {
         type: "add",

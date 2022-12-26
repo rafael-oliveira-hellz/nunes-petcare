@@ -1,2 +1,2 @@
-export * from "./addCategoryRepository";
-export * from "./loadCategoryRepository";
+export * from "./AddCategoryRepository";
+export * from "./LoadCategoryRepository";

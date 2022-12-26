@@ -3,7 +3,7 @@ import { categoryEntityMock } from "@/slices/category/entities/CategoryEntity.sp
 import { AddCategoryRepository } from "@/slices/category/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { addCategory, addCategoryUsecase } from "./addCategoryUseCase";
+import { addCategory, addCategoryUsecase } from "./AddCategoryUseCase";
 
 describe("addCategory", () => {
     let testInstance: addCategory;
