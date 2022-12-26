@@ -1,0 +1,14 @@
+import { Query } from "@/application/@types";
+import { {{pascalCase name}}Data } from "@/slices/{{camelCase name}}/entities";
+import { Delete{{pascalCase name}}Repository } from "@/slices/{{camelCase name}}/repositories";
+
+export type delete{{pascalCase name}} = (query: Query) => Promise<{{pascalCase name}}Data | null>;
+
+export type delete{{pascalCase name}}Signature = (
+    delete{{pascalCase name}}: Delete{{pascalCase name}}Repository
+) => delete{{pascalCase name}};
+
+export const delete{{pascalCase name}}Usecase: delete{{pascalCase name}}Signature =
+    (delete{{pascalCase name}}: Delete{{pascalCase name}}Repository) => (query: Query) => {
+        return delete{{pascalCase name}}.delete{{pascalCase name}}(query);
+    };

@@ -167,6 +167,21 @@ const useCasesActions = [
     },
     {
         type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/delete{{pascalCase name}}/Delete{{pascalCase name}}UseCase.ts",
+        templateFile: "./templates/useCases/deleteDomain/DeleteDomainUseCase.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/delete{{pascalCase name}}/Delete{{pascalCase name}}UseCase.spec.ts",
+        templateFile: "./templates/useCases/deleteDomain/DeleteDomainUseCase.spec.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/delete{{pascalCase name}}/index.ts",
+        templateFile: "./templates/useCases/deleteDomain/index.ts.hbs",
+    },
+    {
+        type: "add",
         path: "../src/slices/{{camelCase name}}/useCases/index.ts",
         templateFile: "./templates/useCases/index.ts.hbs",
     },

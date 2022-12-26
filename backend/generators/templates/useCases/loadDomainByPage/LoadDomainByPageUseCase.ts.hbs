@@ -8,7 +8,7 @@ export type load{{pascalCase name}}ByPageSignature = (
     load{{pascalCase name}}ByPage: Load{{pascalCase name}}ByPageRepository
 ) => load{{pascalCase name}}ByPage;
 
-export const load{{pascalCase name}}Usecase: load{{pascalCase name}}ByPageSignature =
+export const load{{pascalCase name}}ByPageUsecase: load{{pascalCase name}}ByPageSignature =
     (load{{pascalCase name}}ByPageRepository: Load{{pascalCase name}}ByPageRepository) => (query: Query) => {
         return load{{pascalCase name}}ByPageRepository.loadByPage(query);
     };

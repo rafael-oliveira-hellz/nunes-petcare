@@ -8,7 +8,7 @@ export type loadCategoryByPageSignature = (
     loadCategoryByPage: LoadCategoryByPageRepository
 ) => loadCategoryByPage;
 
-export const loadCategoryUsecase: loadCategoryByPageSignature =
+export const loadCategoryByPageUsecase: loadCategoryByPageSignature =
     (loadCategoryByPageRepository: LoadCategoryByPageRepository) => (query: Query) => {
         return loadCategoryByPageRepository.loadByPage(query);
     };
