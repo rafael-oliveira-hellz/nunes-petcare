@@ -187,6 +187,21 @@ const useCasesActions = [
     },
     {
         type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/update{{pascalCase name}}/Update{{pascalCase name}}UseCase.ts",
+        templateFile: "./templates/useCases/updateDomain/UpdateDomainUseCase.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/update{{pascalCase name}}/Update{{pascalCase name}}UseCase.spec.ts",
+        templateFile: "./templates/useCases/updateDomain/UpdateDomainUseCase.spec.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/useCases/update{{pascalCase name}}/index.ts",
+        templateFile: "./templates/useCases/updateDomain/index.ts.hbs",
+    },
+    {
+        type: "add",
         path: "../src/slices/{{camelCase name}}/useCases/index.ts",
         templateFile: "./templates/useCases/index.ts.hbs",
     },

@@ -1,0 +1,14 @@
+import { Query } from "@/application/@types";
+import { {{pascalCase name}}Data } from "@/slices/{{camelCase name}}/entities";
+import { Update{{pascalCase name}}Repository } from "@/slices/{{camelCase name}}/repositories";
+
+export type update{{pascalCase name}} = (query: Query) => Promise<{{pascalCase name}}Data | null>;
+
+export type update{{pascalCase name}}Signature = (
+    update{{pascalCase name}}: Update{{pascalCase name}}Repository
+) => update{{pascalCase name}};
+
+export const update{{pascalCase name}}Usecase: update{{pascalCase name}}Signature =
+    (update{{pascalCase name}}: Update{{pascalCase name}}Repository) => (query: Query) => {
+        return update{{pascalCase name}}.update{{pascalCase name}}(query);
+    };
