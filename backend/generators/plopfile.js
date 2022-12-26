@@ -10,6 +10,18 @@ module.exports = function (plop) {
         ],
         actions: [...entitiesActions],
     });
+
+    plop.setGenerator("repositories", {
+        description: "Generate repositories",
+        prompts: [
+            {
+                type: "input",
+                name: "name",
+                message: "What is the name of the repository?",
+            },
+        ],
+        actions: [...reposittoriesActions],
+    });
 };
 
 const entitiesActions = [
@@ -27,5 +39,18 @@ const entitiesActions = [
         type: "add",
         path: "../src/slices/{{camelCase name}}/entities/index.ts",
         templateFile: "./templates/entities/index.ts.hbs",
+    },
+];
+
+const reposittoriesActions = [
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/repositories/contracts/add{{pascalCase name}}Repository.ts",
+        templateFile: "./templates/repositories/contracts/addDomainRepository.ts.hbs",
+    },
+    {
+        type: "add",
+        path: "../src/slices/{{camelCase name}}/repositories/contracts/index.ts",
+        templateFile: "./templates/repositories/contracts/index.ts.hbs",
     },
 ];
