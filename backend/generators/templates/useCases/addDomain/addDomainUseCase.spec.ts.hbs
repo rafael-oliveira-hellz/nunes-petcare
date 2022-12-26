@@ -33,4 +33,24 @@ describe("add{{pascalCase name}}", () => {
 
         expect(add{{pascalCase name}}Repository.add{{pascalCase name}}).toHaveBeenCalledTimes(1);
     });
+
+    it("should return a new {{camelCase name}} when add{{pascalCase name}}Repository inserts it", async () => {
+        const {{camelCase name}} = await testInstance({{camelCase name}}EntityMock);
+
+        expect({{camelCase name}}).toEqual({{camelCase name}}EntityMock);
+    });
+
+    it("should return null when add{{pascalCase name}}Repository fails to insert", async () => {
+        add{{pascalCase name}}Repository.add{{pascalCase name}}.mockResolvedValue(null);
+
+        const {{camelCase name}} = await testInstance({{camelCase name}}EntityMock);
+
+        expect({{camelCase name}}).toBeNull();
+    });
+
+    it("should throw an error when add{{pascalCase name}}Repository throws an error", async () => {
+        add{{pascalCase name}}Repository.add{{pascalCase name}}.mockRejectedValue(new Error("Error"));
+
+        await expect(testInstance({{camelCase name}}EntityMock)).rejects.toThrowError("Error");
+    });
 });
