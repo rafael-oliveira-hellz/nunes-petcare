@@ -33,15 +33,18 @@ describe("updateCategory", () => {
     });
 
     it("should call updateCategory of updateCategoryRepository with correct values", async () => {
-        await testInstance(fakeQuery);
+        await testInstance(fakeQuery, categoryEntityMock);
 
-        expect(updateCategoryRepository.updateCategory).toHaveBeenCalledWith(fakeQuery);
+        expect(updateCategoryRepository.updateCategory).toHaveBeenCalledWith(
+            fakeQuery,
+            categoryEntityMock
+        );
 
         expect(updateCategoryRepository.updateCategory).toHaveBeenCalledTimes(1);
     });
 
     it("should return a new deleted category when updateCategoryRepository deletes it", async () => {
-        const category = await testInstance(fakeQuery);
+        const category = await testInstance(fakeQuery, categoryEntityMock);
 
         expect(category).toEqual(categoryEntityMock);
     });
@@ -49,7 +52,7 @@ describe("updateCategory", () => {
     it("should return null when updateCategoryRepository fails to insert", async () => {
         updateCategoryRepository.updateCategory.mockResolvedValue(null);
 
-        const category = await testInstance(fakeQuery);
+        const category = await testInstance(fakeQuery, categoryEntityMock);
 
         expect(category).toBeNull();
     });
@@ -57,6 +60,8 @@ describe("updateCategory", () => {
     it("should throw an error when updateCategoryRepository throws an error", async () => {
         updateCategoryRepository.updateCategory.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, categoryEntityMock)).rejects.toThrowError(
+            "Error"
+        );
     });
 });

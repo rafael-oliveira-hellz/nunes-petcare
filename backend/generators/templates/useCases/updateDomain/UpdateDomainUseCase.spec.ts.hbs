@@ -33,15 +33,15 @@ describe("update{{pascalCase name}}", () => {
     });
 
     it("should call update{{pascalCase name}} of update{{pascalCase name}}Repository with correct values", async () => {
-        await testInstance(fakeQuery);
+        await testInstance(fakeQuery, {{camelCase name}}EntityMock);
 
-        expect(update{{pascalCase name}}Repository.update{{pascalCase name}}).toHaveBeenCalledWith(fakeQuery);
+        expect(update{{pascalCase name}}Repository.update{{pascalCase name}}).toHaveBeenCalledWith(fakeQuery, {{camelCase name}}EntityMock);
 
         expect(update{{pascalCase name}}Repository.update{{pascalCase name}}).toHaveBeenCalledTimes(1);
     });
 
     it("should return a new deleted {{camelCase name}} when update{{pascalCase name}}Repository deletes it", async () => {
-        const {{camelCase name}} = await testInstance(fakeQuery);
+        const {{camelCase name}} = await testInstance(fakeQuery, {{camelCase name}}EntityMock);
 
         expect({{camelCase name}}).toEqual({{camelCase name}}EntityMock);
     });
@@ -49,7 +49,7 @@ describe("update{{pascalCase name}}", () => {
     it("should return null when update{{pascalCase name}}Repository fails to insert", async () => {
         update{{pascalCase name}}Repository.update{{pascalCase name}}.mockResolvedValue(null);
 
-        const {{camelCase name}} = await testInstance(fakeQuery);
+        const {{camelCase name}} = await testInstance(fakeQuery, {{camelCase name}}EntityMock);
 
         expect({{camelCase name}}).toBeNull();
     });
@@ -57,6 +57,6 @@ describe("update{{pascalCase name}}", () => {
     it("should throw an error when update{{pascalCase name}}Repository throws an error", async () => {
         update{{pascalCase name}}Repository.update{{pascalCase name}}.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, {{camelCase name}}EntityMock)).rejects.toThrowError("Error");
     });
 });
