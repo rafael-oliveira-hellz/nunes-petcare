@@ -20,7 +20,7 @@ module.exports = function (plop) {
                 message: "What is the name of the repository?",
             },
         ],
-        actions: [...reposittoriesActions],
+        actions: [...repositoriesActions],
     });
 
     plop.setGenerator("useCases", {
@@ -33,6 +33,18 @@ module.exports = function (plop) {
             },
         ],
         actions: [...useCasesActions],
+    });
+
+    plop.setGenerator("all", {
+        description: "Generate all CRUD slices",
+        prompts: [
+            {
+                type: "input",
+                name: "name",
+                message: "What is the name of the CRUD?",
+            },
+        ],
+        actions: [...entitiesActions, ...repositoriesActions, ...useCasesActions],
     });
 
     plop.setGenerator("test", {
@@ -82,7 +94,7 @@ const entitiesActions = [
     },
 ];
 
-const reposittoriesActions = [
+const repositoriesActions = [
     {
         type: "add",
         path: "../src/slices/{{camelCase name}}/repositories/contracts/Add{{pascalCase name}}Repository.ts",
