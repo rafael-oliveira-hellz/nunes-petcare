@@ -60,8 +60,6 @@ describe("updateCustomer", () => {
     it("should throw an error when updateCustomerRepository throws an error", async () => {
         updateCustomerRepository.updateCustomer.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, customerEntityMock)).rejects.toThrowError(
-            "Error",
-        );
+        await expect(testInstance(fakeQuery, customerEntityMock)).rejects.toThrowError("Error");
     });
 });

@@ -4,9 +4,7 @@ import { DeleteAccountRepository } from "@/slices/account/repositories";
 
 export type deleteAccount = (query: Query) => Promise<AccountData | null>;
 
-export type deleteAccountSignature = (
-    deleteAccount: DeleteAccountRepository,
-) => deleteAccount;
+export type deleteAccountSignature = (deleteAccount: DeleteAccountRepository) => deleteAccount;
 
 export const deleteAccountUsecase: deleteAccountSignature =
     (deleteAccount: DeleteAccountRepository) => (query: Query) => {

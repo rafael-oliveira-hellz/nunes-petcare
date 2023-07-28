@@ -35,10 +35,7 @@ describe("updateOwner", () => {
     it("should call updateOwner of updateOwnerRepository with correct values", async () => {
         await testInstance(fakeQuery, ownerEntityMock);
 
-        expect(updateOwnerRepository.updateOwner).toHaveBeenCalledWith(
-            fakeQuery,
-            ownerEntityMock,
-        );
+        expect(updateOwnerRepository.updateOwner).toHaveBeenCalledWith(fakeQuery, ownerEntityMock);
 
         expect(updateOwnerRepository.updateOwner).toHaveBeenCalledTimes(1);
     });
@@ -60,8 +57,6 @@ describe("updateOwner", () => {
     it("should throw an error when updateOwnerRepository throws an error", async () => {
         updateOwnerRepository.updateOwner.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, ownerEntityMock)).rejects.toThrowError(
-            "Error",
-        );
+        await expect(testInstance(fakeQuery, ownerEntityMock)).rejects.toThrowError("Error");
     });
 });

@@ -4,9 +4,7 @@ import { LoadUserByPageRepository } from "@/slices/user/repositories";
 
 export type loadUserByPage = (query: Query) => Promise<UserPaginatedData | null>;
 
-export type loadUserByPageSignature = (
-    loadUserByPage: LoadUserByPageRepository,
-) => loadUserByPage;
+export type loadUserByPageSignature = (loadUserByPage: LoadUserByPageRepository) => loadUserByPage;
 
 export const loadUserByPageUsecase: loadUserByPageSignature =
     (loadUserByPageRepository: LoadUserByPageRepository) => (query: Query) => {

@@ -4,9 +4,7 @@ import { DeleteCategoryRepository } from "@/slices/category/repositories";
 
 export type deleteCategory = (query: Query) => Promise<CategoryData | null>;
 
-export type deleteCategorySignature = (
-    deleteCategory: DeleteCategoryRepository,
-) => deleteCategory;
+export type deleteCategorySignature = (deleteCategory: DeleteCategoryRepository) => deleteCategory;
 
 export const deleteCategoryUsecase: deleteCategorySignature =
     (deleteCategory: DeleteCategoryRepository) => (query: Query) => {

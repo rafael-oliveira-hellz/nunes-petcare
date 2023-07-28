@@ -35,10 +35,7 @@ describe("updateUser", () => {
     it("should call updateUser of updateUserRepository with correct values", async () => {
         await testInstance(fakeQuery, userEntityMock);
 
-        expect(updateUserRepository.updateUser).toHaveBeenCalledWith(
-            fakeQuery,
-            userEntityMock,
-        );
+        expect(updateUserRepository.updateUser).toHaveBeenCalledWith(fakeQuery, userEntityMock);
 
         expect(updateUserRepository.updateUser).toHaveBeenCalledTimes(1);
     });
@@ -60,8 +57,6 @@ describe("updateUser", () => {
     it("should throw an error when updateUserRepository throws an error", async () => {
         updateUserRepository.updateUser.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, userEntityMock)).rejects.toThrowError(
-            "Error",
-        );
+        await expect(testInstance(fakeQuery, userEntityMock)).rejects.toThrowError("Error");
     });
 });

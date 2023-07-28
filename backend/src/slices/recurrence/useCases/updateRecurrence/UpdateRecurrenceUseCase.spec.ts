@@ -21,9 +21,7 @@ describe("updateRecurrence", () => {
             options: {},
         };
 
-        updateRecurrenceRepository.updateRecurrence.mockResolvedValue(
-            recurrenceEntityMock,
-        );
+        updateRecurrenceRepository.updateRecurrence.mockResolvedValue(recurrenceEntityMock);
     });
 
     beforeEach(() => {
@@ -62,8 +60,6 @@ describe("updateRecurrence", () => {
     it("should throw an error when updateRecurrenceRepository throws an error", async () => {
         updateRecurrenceRepository.updateRecurrence.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, recurrenceEntityMock)).rejects.toThrowError(
-            "Error",
-        );
+        await expect(testInstance(fakeQuery, recurrenceEntityMock)).rejects.toThrowError("Error");
     });
 });

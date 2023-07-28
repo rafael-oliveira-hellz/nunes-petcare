@@ -24,9 +24,7 @@ describe("loadAppointmentByPage", () => {
             options: {},
         };
 
-        loadAppointmentRepository.loadByPage.mockResolvedValue(
-            appointmentEntityPaginatedMock,
-        );
+        loadAppointmentRepository.loadByPage.mockResolvedValue(appointmentEntityPaginatedMock);
     });
 
     beforeEach(() => {

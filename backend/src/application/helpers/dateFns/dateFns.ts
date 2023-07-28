@@ -114,10 +114,7 @@ export const eachMinuteOfInterval = (
     return eachMinuteOfIntervalDateFns({ start, end }, options);
 };
 
-export const eachQuarterOfInterval = (
-    start: number | Date,
-    end: number | Date,
-): Date[] => {
+export const eachQuarterOfInterval = (start: number | Date, end: number | Date): Date[] => {
     return eachQuarterOfIntervalDateFns({ start, end });
 };
 

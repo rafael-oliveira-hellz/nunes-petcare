@@ -60,8 +60,6 @@ describe("updateFidelity", () => {
     it("should throw an error when updateFidelityRepository throws an error", async () => {
         updateFidelityRepository.updateFidelity.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, fidelityEntityMock)).rejects.toThrowError(
-            "Error",
-        );
+        await expect(testInstance(fakeQuery, fidelityEntityMock)).rejects.toThrowError("Error");
     });
 });

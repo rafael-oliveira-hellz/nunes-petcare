@@ -12,7 +12,6 @@ export type updateRecurrenceSignature = (
 ) => updateRecurrence;
 
 export const updateRecurrenceUsecase: updateRecurrenceSignature =
-    (updateRecurrence: UpdateRecurrenceRepository) =>
-    (query: Query, data: RecurrenceData) => {
+    (updateRecurrence: UpdateRecurrenceRepository) => (query: Query, data: RecurrenceData) => {
         return updateRecurrence.updateRecurrence(query, data);
     };

@@ -27,9 +27,7 @@ describe("addOwner", () => {
     it("should call addOwner of addOwnerRepository with correct values", async () => {
         await testInstance(ownerEntityMock);
 
-        expect(addOwnerRepository.addOwner).toHaveBeenCalledWith(
-            new OwnerEntity(ownerEntityMock),
-        );
+        expect(addOwnerRepository.addOwner).toHaveBeenCalledWith(new OwnerEntity(ownerEntityMock));
 
         expect(addOwnerRepository.addOwner).toHaveBeenCalledTimes(1);
     });

@@ -27,9 +27,7 @@ describe("addOrder", () => {
     it("should call addOrder of addOrderRepository with correct values", async () => {
         await testInstance(orderEntityMock);
 
-        expect(addOrderRepository.addOrder).toHaveBeenCalledWith(
-            new OrderEntity(orderEntityMock),
-        );
+        expect(addOrderRepository.addOrder).toHaveBeenCalledWith(new OrderEntity(orderEntityMock));
 
         expect(addOrderRepository.addOrder).toHaveBeenCalledTimes(1);
     });

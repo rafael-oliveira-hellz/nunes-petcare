@@ -12,7 +12,6 @@ export type updateAppointmentSignature = (
 ) => updateAppointment;
 
 export const updateAppointmentUsecase: updateAppointmentSignature =
-    (updateAppointment: UpdateAppointmentRepository) =>
-    (query: Query, data: AppointmentData) => {
+    (updateAppointment: UpdateAppointmentRepository) => (query: Query, data: AppointmentData) => {
         return updateAppointment.updateAppointment(query, data);
     };

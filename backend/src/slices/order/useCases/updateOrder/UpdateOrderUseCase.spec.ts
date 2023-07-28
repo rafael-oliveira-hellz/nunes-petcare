@@ -35,10 +35,7 @@ describe("updateOrder", () => {
     it("should call updateOrder of updateOrderRepository with correct values", async () => {
         await testInstance(fakeQuery, orderEntityMock);
 
-        expect(updateOrderRepository.updateOrder).toHaveBeenCalledWith(
-            fakeQuery,
-            orderEntityMock,
-        );
+        expect(updateOrderRepository.updateOrder).toHaveBeenCalledWith(fakeQuery, orderEntityMock);
 
         expect(updateOrderRepository.updateOrder).toHaveBeenCalledTimes(1);
     });
@@ -60,8 +57,6 @@ describe("updateOrder", () => {
     it("should throw an error when updateOrderRepository throws an error", async () => {
         updateOrderRepository.updateOrder.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, orderEntityMock)).rejects.toThrowError(
-            "Error",
-        );
+        await expect(testInstance(fakeQuery, orderEntityMock)).rejects.toThrowError("Error");
     });
 });

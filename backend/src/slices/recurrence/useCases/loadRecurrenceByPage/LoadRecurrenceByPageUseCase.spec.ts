@@ -3,10 +3,7 @@ import { recurrenceEntityPaginatedMock } from "@/slices/recurrence/entities/Recu
 import { LoadRecurrenceByPageRepository } from "@/slices/recurrence/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import {
-    loadRecurrenceByPage,
-    loadRecurrenceByPageUsecase,
-} from "./LoadRecurrenceByPageUseCase";
+import { loadRecurrenceByPage, loadRecurrenceByPageUsecase } from "./LoadRecurrenceByPageUseCase";
 
 describe("loadRecurrenceByPage", () => {
     let fakeQuery: Query;
@@ -24,9 +21,7 @@ describe("loadRecurrenceByPage", () => {
             options: {},
         };
 
-        loadRecurrenceRepository.loadByPage.mockResolvedValue(
-            recurrenceEntityPaginatedMock,
-        );
+        loadRecurrenceRepository.loadByPage.mockResolvedValue(recurrenceEntityPaginatedMock);
     });
 
     beforeEach(() => {

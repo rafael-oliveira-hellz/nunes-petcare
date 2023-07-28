@@ -3,10 +3,7 @@ import { fidelityEntityPaginatedMock } from "@/slices/fidelity/entities/Fidelity
 import { LoadFidelityByPageRepository } from "@/slices/fidelity/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import {
-    loadFidelityByPage,
-    loadFidelityByPageUsecase,
-} from "./LoadFidelityByPageUseCase";
+import { loadFidelityByPage, loadFidelityByPageUsecase } from "./LoadFidelityByPageUseCase";
 
 describe("loadFidelityByPage", () => {
     let fakeQuery: Query;

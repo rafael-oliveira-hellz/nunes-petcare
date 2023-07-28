@@ -112,9 +112,7 @@ export type CalculateTimeAvailableInput = {
     timeAvailable: Array<any>;
 };
 
-export const getHoursObject = (
-    getHoursInput: GetHoursObjectInput,
-): GetHoursObjectOutput => {
+export const getHoursObject = (getHoursInput: GetHoursObjectInput): GetHoursObjectOutput => {
     const {
         hourEndOne,
         hourLunchEndOne,
@@ -190,9 +188,11 @@ export const mapBusinessHours = (
         dayOfWeek2,
         dayOfWeek3,
     });
+
     if (hourStartMapped?.length < 2 || hourEndMapped?.length < 2) {
         return null;
     }
+
     const hoursStart = Number(hourStartMapped[0]);
     const minutesStart = Number(hourStartMapped[1]);
     const hourStart = getDateWithCustomHourAndMinutes({
@@ -200,6 +200,7 @@ export const mapBusinessHours = (
         minutes: minutesStart,
         date: dateQuery,
     });
+
     const hoursEnd = Number(hourEndMapped[0]);
     const minutesEnd = Number(hourEndMapped[1]);
     const hourEnd = getDateWithCustomHourAndMinutes({
@@ -207,8 +208,9 @@ export const mapBusinessHours = (
         minutes: minutesEnd,
         date: dateQuery,
     });
-    const haveLunchTime =
-        hourLunchStartMapped?.length === 2 && hourLunchEndMapped?.length === 2;
+
+    const haveLunchTime = hourLunchStartMapped?.length === 2 && hourLunchEndMapped?.length === 2;
+
     if (haveLunchTime) {
         const hoursLunchStart = Number(hourLunchStartMapped[0]);
         const minutesLunchStart = Number(hourLunchStartMapped[1]);
@@ -217,6 +219,7 @@ export const mapBusinessHours = (
             minutes: minutesLunchStart,
             date: dateQuery,
         });
+
         const hoursLunchEnd = Number(hourLunchEndMapped[0]);
         const minutesLunchEnd = Number(hourLunchEndMapped[1]);
         const hourLunchEnd = getDateWithCustomHourAndMinutes({
@@ -224,8 +227,16 @@ export const mapBusinessHours = (
             minutes: minutesLunchEnd,
             date: dateQuery,
         });
-        return { hourStart, hourEnd, hourLunchStart, hourLunchEnd, haveLunchTime: true };
+
+        return {
+            hourStart,
+            hourEnd,
+            hourLunchStart,
+            hourLunchEnd,
+            haveLunchTime: true,
+        };
     }
+
     return {
         hourStart,
         hourEnd,
@@ -235,9 +246,7 @@ export const mapBusinessHours = (
     };
 };
 
-export const getArrayTimes = (
-    getArrayTimesInput: GetArrayTimesInput,
-): AvailableTimesModel => {
+export const getArrayTimes = (getArrayTimesInput: GetArrayTimesInput): AvailableTimesModel => {
     const { infoOwner, dayOfWeekFound, dateQuery, appointments, duration } =
         getArrayTimesInput || {};
     const timeAvailable: any = [];
@@ -247,11 +256,13 @@ export const getArrayTimes = (
         dayOfWeekFound,
         dateQuery,
     });
+
     if (!businessHours) {
         return { timeAvailable, timeAvailableProfessional };
     }
-    const { hourStart, hourEnd, hourLunchStart, hourLunchEnd, haveLunchTime } =
-        businessHours;
+
+    const { hourStart, hourEnd, hourLunchStart, hourLunchEnd, haveLunchTime } = businessHours;
+
     if (appointments?.length > 0) {
         const haveOnlyOneAppointment = appointments.length === 1;
         const [firstAppointment] = appointments;
@@ -268,6 +279,7 @@ export const getArrayTimes = (
             dateQuery,
             timeAvailableProfessional,
         });
+
         if (!haveOnlyOneAppointment) {
             secondStep({
                 hourStart,
@@ -303,11 +315,13 @@ export const getArrayTimes = (
             });
         }
     }
+
     calculateTimeAvailable({
         timeAvailableProfessional,
         duration,
         timeAvailable,
     });
+
     return { timeAvailable, timeAvailableProfessional };
 };
 
@@ -325,18 +339,8 @@ export const firstStep = (firstStepInput: FirstStepInput): void => {
         timeAvailableProfessional,
     } = firstStepInput || {};
     if (haveLunchTime === true) {
-        const insideFirstHalf = intervalsOverlapping(
-            initDate,
-            endDate,
-            hourStart,
-            hourLunchStart,
-        );
-        const insideSecondHalf = intervalsOverlapping(
-            initDate,
-            endDate,
-            hourLunchEnd,
-            hourEnd,
-        );
+        const insideFirstHalf = intervalsOverlapping(initDate, endDate, hourStart, hourLunchStart);
+        const insideSecondHalf = intervalsOverlapping(initDate, endDate, hourLunchEnd, hourEnd);
         if (insideFirstHalf) {
             addTimeInArray({
                 initDate: hourStart,
@@ -449,8 +453,7 @@ export const secondStep = (secondStepInput: SecondStepInput): void => {
                 intervalsOverlapping(initDateNext, endDateNext, hourStart, hourLunchStart);
 
             const nextInsideSecondHalf =
-                hasNext &&
-                intervalsOverlapping(initDateNext, endDateNext, hourLunchEnd, hourEnd);
+                hasNext && intervalsOverlapping(initDateNext, endDateNext, hourLunchEnd, hourEnd);
 
             if (insideFirstHalfAux) {
                 if (!hasNext) {
@@ -521,10 +524,7 @@ export const addTimeInArray = (addTimeInArrayInput: AddTimeInArrayInput): void =
             differenceInMinutes(initDate, dateQuery) > 0) ||
         (initDate &&
             endDate &&
-            differenceInMinutes(
-                parseISO(initDate as string),
-                parseISO(endDate as string),
-            ) < 0 &&
+            differenceInMinutes(parseISO(initDate as string), parseISO(endDate as string)) < 0 &&
             differenceInMinutes(parseISO(initDate as string), dateQuery) > 0)
     ) {
         array.push({ initDate, endDate });
@@ -534,8 +534,7 @@ export const addTimeInArray = (addTimeInArrayInput: AddTimeInArrayInput): void =
 export const calculateTimeAvailable = (
     calculateTimeAvailableInput: CalculateTimeAvailableInput,
 ): void => {
-    const { timeAvailable, duration, timeAvailableProfessional } =
-        calculateTimeAvailableInput;
+    const { timeAvailable, duration, timeAvailableProfessional } = calculateTimeAvailableInput;
     timeAvailableProfessional.forEach((scheduleTime: Schedule) => {
         const { initDate, endDate } = scheduleTime;
         if (differenceInMinutes(endDate, initDate) >= duration) {

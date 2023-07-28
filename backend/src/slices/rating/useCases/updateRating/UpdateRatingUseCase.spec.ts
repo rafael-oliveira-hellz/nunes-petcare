@@ -60,8 +60,6 @@ describe("updateRating", () => {
     it("should throw an error when updateRatingRepository throws an error", async () => {
         updateRatingRepository.updateRating.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, ratingEntityMock)).rejects.toThrowError(
-            "Error",
-        );
+        await expect(testInstance(fakeQuery, ratingEntityMock)).rejects.toThrowError("Error");
     });
 });

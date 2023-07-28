@@ -41,9 +41,7 @@ describe("dateFns functions", () => {
     });
 
     it("should return added days when i call addDays", () => {
-        expect(addDays(new Date(2021, 9, 12), 1)).toBe(
-            new Date(2021, 9, 13).toISOString(),
-        );
+        expect(addDays(new Date(2021, 9, 12), 1)).toBe(new Date(2021, 9, 13).toISOString());
     });
 
     it("should return added minutes when i call addMinutes", () => {
@@ -238,9 +236,7 @@ describe("dateFns functions", () => {
         const startDate = new Date(2022, 0, 1);
         const endDate = new Date(2021, 11, 31);
 
-        expect(() => eachQuarterOfInterval(startDate, endDate)).toThrowError(
-            "Invalid interval",
-        );
+        expect(() => eachQuarterOfInterval(startDate, endDate)).toThrowError("Invalid interval");
     });
 
     test("eachQuarterOfInterval function with same start and end dates", () => {
@@ -261,35 +257,24 @@ describe("dateFns functions", () => {
     });
 
     test("setMinutes function", () => {
-        expect(formatISO(setMinutes(new Date(2021, 9, 14), 3))).toBe(
-            "2021-10-14T00:03:00-03:00",
-        );
+        expect(formatISO(setMinutes(new Date(2021, 9, 14), 3))).toBe("2021-10-14T00:03:00-03:00");
     });
 
     test("setHours function", () => {
-        expect(formatISO(setHours(new Date(2021, 9, 14), 3))).toBe(
-            "2021-10-14T03:00:00-03:00",
-        );
+        expect(formatISO(setHours(new Date(2021, 9, 14), 3))).toBe("2021-10-14T03:00:00-03:00");
     });
 
     test("setSeconds function", () => {
-        expect(formatISO(setSeconds(new Date(2021, 9, 14), 3))).toBe(
-            "2021-10-14T00:00:03-03:00",
-        );
+        expect(formatISO(setSeconds(new Date(2021, 9, 14), 3))).toBe("2021-10-14T00:00:03-03:00");
     });
 
     test("setMili function", () => {
-        expect(formatISO(setMili(new Date(2021, 9, 14), 3))).toBe(
-            "2021-10-14T00:00:00-03:00",
-        );
+        expect(formatISO(setMili(new Date(2021, 9, 14), 3))).toBe("2021-10-14T00:00:00-03:00");
     });
 
     test("differenceInMinutes function", () => {
         expect(
-            differenceInMinutes(
-                new Date(2021, 9, 14, 10, 30),
-                new Date(2021, 9, 14, 10, 20),
-            ),
+            differenceInMinutes(new Date(2021, 9, 14, 10, 30), new Date(2021, 9, 14, 10, 20)),
         ).toBe(10);
     });
 
@@ -298,9 +283,7 @@ describe("dateFns functions", () => {
     });
 
     test("endOfDay function", () => {
-        expect(endOfDay(new Date(2021, 9, 15))).toStrictEqual(
-            new Date("2021-10-16T02:59:59.999Z"),
-        );
+        expect(endOfDay(new Date(2021, 9, 15))).toStrictEqual(new Date("2021-10-16T02:59:59.999Z"));
     });
 
     test("dayOfWeek function when the day passed is friday", () => {

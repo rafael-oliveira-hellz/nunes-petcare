@@ -3,9 +3,7 @@ import { AddRecurrenceRepository } from "@/slices/recurrence/repositories";
 
 export type addRecurrence = (data: RecurrenceData) => Promise<RecurrenceEntity | null>;
 
-export type addRecurrenceSignature = (
-    addRecurrence: AddRecurrenceRepository,
-) => addRecurrence;
+export type addRecurrenceSignature = (addRecurrence: AddRecurrenceRepository) => addRecurrence;
 
 export const addRecurrenceUsecase: addRecurrenceSignature =
     (addRecurrence: AddRecurrenceRepository) => (data: RecurrenceData) => {

@@ -3,10 +3,7 @@ import { ratingResultEntityMock } from "@/slices/ratingResult/entities/RatingRes
 import { UpdateRatingResultRepository } from "@/slices/ratingResult/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import {
-    updateRatingResult,
-    updateRatingResultUsecase,
-} from "./UpdateRatingResultUseCase";
+import { updateRatingResult, updateRatingResultUsecase } from "./UpdateRatingResultUseCase";
 
 describe("updateRatingResult", () => {
     let fakeQuery: Query;
@@ -24,9 +21,7 @@ describe("updateRatingResult", () => {
             options: {},
         };
 
-        updateRatingResultRepository.updateRatingResult.mockResolvedValue(
-            ratingResultEntityMock,
-        );
+        updateRatingResultRepository.updateRatingResult.mockResolvedValue(ratingResultEntityMock);
     });
 
     beforeEach(() => {
@@ -63,12 +58,8 @@ describe("updateRatingResult", () => {
     });
 
     it("should throw an error when updateRatingResultRepository throws an error", async () => {
-        updateRatingResultRepository.updateRatingResult.mockRejectedValue(
-            new Error("Error"),
-        );
+        updateRatingResultRepository.updateRatingResult.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, ratingResultEntityMock)).rejects.toThrowError(
-            "Error",
-        );
+        await expect(testInstance(fakeQuery, ratingResultEntityMock)).rejects.toThrowError("Error");
     });
 });

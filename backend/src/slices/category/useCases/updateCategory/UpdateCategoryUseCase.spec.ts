@@ -60,8 +60,6 @@ describe("updateCategory", () => {
     it("should throw an error when updateCategoryRepository throws an error", async () => {
         updateCategoryRepository.updateCategory.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, categoryEntityMock)).rejects.toThrowError(
-            "Error",
-        );
+        await expect(testInstance(fakeQuery, categoryEntityMock)).rejects.toThrowError("Error");
     });
 });

@@ -21,9 +21,7 @@ describe("updateAppointment", () => {
             options: {},
         };
 
-        updateAppointmentRepository.updateAppointment.mockResolvedValue(
-            appointmentEntityMock,
-        );
+        updateAppointmentRepository.updateAppointment.mockResolvedValue(appointmentEntityMock);
     });
 
     beforeEach(() => {
@@ -60,12 +58,8 @@ describe("updateAppointment", () => {
     });
 
     it("should throw an error when updateAppointmentRepository throws an error", async () => {
-        updateAppointmentRepository.updateAppointment.mockRejectedValue(
-            new Error("Error"),
-        );
+        updateAppointmentRepository.updateAppointment.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, appointmentEntityMock)).rejects.toThrowError(
-            "Error",
-        );
+        await expect(testInstance(fakeQuery, appointmentEntityMock)).rejects.toThrowError("Error");
     });
 });

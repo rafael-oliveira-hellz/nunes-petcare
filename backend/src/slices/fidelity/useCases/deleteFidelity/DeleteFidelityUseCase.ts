@@ -4,9 +4,7 @@ import { DeleteFidelityRepository } from "@/slices/fidelity/repositories";
 
 export type deleteFidelity = (query: Query) => Promise<FidelityData | null>;
 
-export type deleteFidelitySignature = (
-    deleteFidelity: DeleteFidelityRepository,
-) => deleteFidelity;
+export type deleteFidelitySignature = (deleteFidelity: DeleteFidelityRepository) => deleteFidelity;
 
 export const deleteFidelityUsecase: deleteFidelitySignature =
     (deleteFidelity: DeleteFidelityRepository) => (query: Query) => {

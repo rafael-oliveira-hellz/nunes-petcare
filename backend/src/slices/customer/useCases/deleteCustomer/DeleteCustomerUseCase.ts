@@ -4,9 +4,7 @@ import { DeleteCustomerRepository } from "@/slices/customer/repositories";
 
 export type deleteCustomer = (query: Query) => Promise<CustomerData | null>;
 
-export type deleteCustomerSignature = (
-    deleteCustomer: DeleteCustomerRepository,
-) => deleteCustomer;
+export type deleteCustomerSignature = (deleteCustomer: DeleteCustomerRepository) => deleteCustomer;
 
 export const deleteCustomerUsecase: deleteCustomerSignature =
     (deleteCustomer: DeleteCustomerRepository) => (query: Query) => {

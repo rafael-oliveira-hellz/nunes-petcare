@@ -24,9 +24,7 @@ describe("loadRatingResultByPage", () => {
             options: {},
         };
 
-        loadRatingResultRepository.loadByPage.mockResolvedValue(
-            ratingResultEntityPaginatedMock,
-        );
+        loadRatingResultRepository.loadByPage.mockResolvedValue(ratingResultEntityPaginatedMock);
     });
 
     beforeEach(() => {

@@ -3,10 +3,7 @@ import { categoryEntityPaginatedMock } from "@/slices/category/entities/Category
 import { LoadCategoryByPageRepository } from "@/slices/category/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import {
-    loadCategoryByPage,
-    loadCategoryByPageUsecase,
-} from "./LoadCategoryByPageUseCase";
+import { loadCategoryByPage, loadCategoryByPageUsecase } from "./LoadCategoryByPageUseCase";
 
 describe("loadCategoryByPage", () => {
     let fakeQuery: Query;

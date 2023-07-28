@@ -21,9 +21,7 @@ describe("deleteAppointment", () => {
             options: {},
         };
 
-        deleteAppointmentRepository.deleteAppointment.mockResolvedValue(
-            appointmentEntityMock,
-        );
+        deleteAppointmentRepository.deleteAppointment.mockResolvedValue(appointmentEntityMock);
     });
 
     beforeEach(() => {
@@ -37,9 +35,7 @@ describe("deleteAppointment", () => {
     it("should call deleteAppointment of deleteAppointmentRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(deleteAppointmentRepository.deleteAppointment).toHaveBeenCalledWith(
-            fakeQuery,
-        );
+        expect(deleteAppointmentRepository.deleteAppointment).toHaveBeenCalledWith(fakeQuery);
 
         expect(deleteAppointmentRepository.deleteAppointment).toHaveBeenCalledTimes(1);
     });
@@ -59,9 +55,7 @@ describe("deleteAppointment", () => {
     });
 
     it("should throw an error when deleteAppointmentRepository throws an error", async () => {
-        deleteAppointmentRepository.deleteAppointment.mockRejectedValue(
-            new Error("Error"),
-        );
+        deleteAppointmentRepository.deleteAppointment.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

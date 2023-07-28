@@ -13,9 +13,7 @@ describe("addRatingResult", () => {
         MockDate.set(new Date());
         addRatingResultRepository = mock();
 
-        addRatingResultRepository.addRatingResult.mockResolvedValue(
-            ratingResultEntityMock,
-        );
+        addRatingResultRepository.addRatingResult.mockResolvedValue(ratingResultEntityMock);
     });
 
     beforeEach(() => {
