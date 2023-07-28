@@ -27,7 +27,6 @@ import {
     isBefore as isBeforeDateFns,
     differenceInDays as differenceInDaysDateFns,
     subDays as subDaysDateFns,
-    isDate as isDateFromDateFns,
 } from "date-fns";
 
 type Options = {
@@ -74,28 +73,16 @@ export const addDuration = (duration: Duration, date: number | Date): Date => {
     return addDateFns(date, duration);
 };
 
-type DateWithMethods = Date | { getMonth(): number };
-
 export const intervalsOverlapping = (
-    started1: DateWithMethods | string,
-    ended1: DateWithMethods | string,
-    started2: DateWithMethods | string,
-    ended2: DateWithMethods | string,
+    started1: any,
+    ended1: any,
+    started2: any,
+    ended2: any,
 ): boolean => {
-    const parseISODateFns = (date: DateWithMethods | string): Date => {
-        if (isDateFromDateFns(date)) {
-            return date as Date;
-        }
-        return parseISO(date as string);
-    };
-
-    const start1Aux: Date =
-        started1 instanceof Date ? started1 : parseISODateFns(started1);
-    const start2Aux: Date =
-        started2 instanceof Date ? started2 : parseISODateFns(started2);
-    const end1Aux: Date = ended1 instanceof Date ? ended1 : parseISODateFns(ended1);
-    const end2Aux: Date = ended2 instanceof Date ? ended2 : parseISODateFns(ended2);
-
+    const start1Aux: Date = started1?.getMonth ? started1 : parseISODateFns(started1);
+    const start2Aux: Date = started2?.getMonth ? started2 : parseISODateFns(started2);
+    const end1Aux: Date = ended1?.getMonth ? ended1 : parseISODateFns(ended1);
+    const end2Aux: Date = ended2?.getMonth ? ended2 : parseISODateFns(ended2);
     if (
         start2Aux.getTime() > start1Aux.getTime() ||
         start1Aux.getTime() > end1Aux.getTime() ||
