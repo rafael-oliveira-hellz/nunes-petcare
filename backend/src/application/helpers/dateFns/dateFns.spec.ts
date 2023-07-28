@@ -222,21 +222,21 @@ describe("dateFns functions", () => {
     });
 
     test("eachQuarterOfInterval function with valid dates", () => {
-        const startDate = new Date(2021, 0, 1); // January 1, 2021
-        const endDate = new Date(2021, 11, 31); // December 31, 2021
+        const startDate = new Date(2021, 0, 1);
+        const endDate = new Date(2021, 11, 31);
 
         const result = eachQuarterOfInterval(startDate, endDate);
         expect(result).toEqual([
-            new Date(2021, 0, 1), // January 1, 2021
-            new Date(2021, 3, 1), // April 1, 2021
-            new Date(2021, 6, 1), // July 1, 2021
-            new Date(2021, 9, 1), // October 1, 2021
+            new Date(2021, 0, 1),
+            new Date(2021, 3, 1),
+            new Date(2021, 6, 1),
+            new Date(2021, 9, 1),
         ]);
     });
 
     test("eachQuarterOfInterval function with start greater than end", () => {
-        const startDate = new Date(2022, 0, 1); // January 1, 2022
-        const endDate = new Date(2021, 11, 31); // December 31, 2021
+        const startDate = new Date(2022, 0, 1);
+        const endDate = new Date(2021, 11, 31);
 
         expect(() => eachQuarterOfInterval(startDate, endDate)).toThrowError(
             "Invalid interval",
@@ -244,27 +244,19 @@ describe("dateFns functions", () => {
     });
 
     test("eachQuarterOfInterval function with same start and end dates", () => {
-        const startDate = new Date(2021, 5, 15); // June 15, 2021
-        const endDate = new Date(2021, 5, 15); // June 15, 2021
+        const startDate = new Date(2021, 5, 15);
+        const endDate = new Date(2021, 5, 15);
 
         const result = eachQuarterOfInterval(startDate, endDate);
-        expect(result).toEqual([new Date(2021, 3, 1)]); // April 1, 2021
+        expect(result).toEqual([new Date(2021, 3, 1)]);
     });
 
     test("eachQuarterOfInterval function with step 1 quarter", () => {
-        const startDate = new Date(2020, 1, 1);
-        const endDate = new Date(2020, 1, 1);
-
-        const result = eachQuarterOfInterval(startDate, endDate);
-
-        expect(result.length).toBe(1);
-    });
-
-    test("eachQuarterOfInterval function with step 2 quarters", () => {
         const startDate = new Date(2020, 0, 1);
         const endDate = new Date(2023, 11, 31);
 
         const result = eachQuarterOfInterval(startDate, endDate);
+
         expect(result.length).toBe(16);
     });
 
