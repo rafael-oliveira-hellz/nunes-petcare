@@ -157,19 +157,19 @@ export const dayOfWeek = (date: number | Date): string => {
     const result = getDayDateFns(date);
     switch (result) {
         case 0:
-            return "sunday";
+            return "domingo";
         case 1:
-            return "monday";
+            return "segunda-feira";
         case 2:
-            return "tuesday";
+            return "terça-feira";
         case 3:
-            return "wednesday";
+            return "quarta-feira";
         case 4:
-            return "thursday";
+            return "quinta-feira";
         case 5:
-            return "friday";
+            return "sexta-feira";
         case 6:
-            return "saturday";
+            return "sábado";
     }
 };
 
