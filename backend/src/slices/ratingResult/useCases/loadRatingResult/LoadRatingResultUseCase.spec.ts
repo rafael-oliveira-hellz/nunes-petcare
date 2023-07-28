@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { ratingResultEntityMock } from "@/slices/ratingResult/entities/RatingResultEntity.spec";
 import { LoadRatingResultRepository } from "@/slices/ratingResult/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -21,7 +21,9 @@ describe("loadRatingResult", () => {
             options: {},
         };
 
-        loadRatingResultRepository.loadRatingResult.mockResolvedValue(ratingResultEntityMock);
+        loadRatingResultRepository.loadRatingResult.mockResolvedValue(
+            ratingResultEntityMock,
+        );
     });
 
     beforeEach(() => {
@@ -35,7 +37,9 @@ describe("loadRatingResult", () => {
     it("should call loadRatingResult of loadRatingResultRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(loadRatingResultRepository.loadRatingResult).toHaveBeenCalledWith(fakeQuery);
+        expect(loadRatingResultRepository.loadRatingResult).toHaveBeenCalledWith(
+            fakeQuery,
+        );
 
         expect(loadRatingResultRepository.loadRatingResult).toHaveBeenCalledTimes(1);
     });

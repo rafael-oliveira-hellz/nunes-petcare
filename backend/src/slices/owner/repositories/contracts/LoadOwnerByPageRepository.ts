@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { OwnerPaginatedData } from "@/slices/owner/entities";
 
 export interface LoadOwnerByPageRepository {

@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { ratingEntityPaginatedMock } from "@/slices/rating/entities/RatingEntity.spec";
 import { LoadRatingByPageRepository } from "@/slices/rating/repositories";
 import { mock, MockProxy } from "jest-mock-extended";

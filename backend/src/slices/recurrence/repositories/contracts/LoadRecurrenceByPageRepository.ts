@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { RecurrencePaginatedData } from "@/slices/recurrence/entities";
 
 export interface LoadRecurrenceByPageRepository {

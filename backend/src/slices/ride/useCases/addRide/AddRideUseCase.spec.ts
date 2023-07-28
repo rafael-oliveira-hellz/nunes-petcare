@@ -28,7 +28,7 @@ describe("addRide", () => {
         await testInstance(rideEntityMock);
 
         expect(addRideRepository.addRide).toHaveBeenCalledWith(
-            new RideEntity(rideEntityMock)
+            new RideEntity(rideEntityMock),
         );
 
         expect(addRideRepository.addRide).toHaveBeenCalledTimes(1);

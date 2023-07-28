@@ -1,11 +1,13 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { RecurrencePaginatedData } from "@/slices/recurrence/entities";
 import { LoadRecurrenceByPageRepository } from "@/slices/recurrence/repositories";
 
-export type loadRecurrenceByPage = (query: Query) => Promise<RecurrencePaginatedData | null>;
+export type loadRecurrenceByPage = (
+    query: Query,
+) => Promise<RecurrencePaginatedData | null>;
 
 export type loadRecurrenceByPageSignature = (
-    loadRecurrenceByPage: LoadRecurrenceByPageRepository
+    loadRecurrenceByPage: LoadRecurrenceByPageRepository,
 ) => loadRecurrenceByPage;
 
 export const loadRecurrenceByPageUsecase: loadRecurrenceByPageSignature =

@@ -13,7 +13,9 @@ describe("addRatingResult", () => {
         MockDate.set(new Date());
         addRatingResultRepository = mock();
 
-        addRatingResultRepository.addRatingResult.mockResolvedValue(ratingResultEntityMock);
+        addRatingResultRepository.addRatingResult.mockResolvedValue(
+            ratingResultEntityMock,
+        );
     });
 
     beforeEach(() => {
@@ -28,7 +30,7 @@ describe("addRatingResult", () => {
         await testInstance(ratingResultEntityMock);
 
         expect(addRatingResultRepository.addRatingResult).toHaveBeenCalledWith(
-            new RatingResultEntity(ratingResultEntityMock)
+            new RatingResultEntity(ratingResultEntityMock),
         );
 
         expect(addRatingResultRepository.addRatingResult).toHaveBeenCalledTimes(1);

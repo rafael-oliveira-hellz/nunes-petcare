@@ -28,7 +28,7 @@ describe("addCustomer", () => {
         await testInstance(customerEntityMock);
 
         expect(addCustomerRepository.addCustomer).toHaveBeenCalledWith(
-            new CustomerEntity(customerEntityMock)
+            new CustomerEntity(customerEntityMock),
         );
 
         expect(addCustomerRepository.addCustomer).toHaveBeenCalledTimes(1);

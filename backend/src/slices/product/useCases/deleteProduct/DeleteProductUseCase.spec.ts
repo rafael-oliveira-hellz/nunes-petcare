@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { productEntityMock } from "@/slices/product/entities/ProductEntity.spec";
 import { DeleteProductRepository } from "@/slices/product/repositories";
 import { mock, MockProxy } from "jest-mock-extended";

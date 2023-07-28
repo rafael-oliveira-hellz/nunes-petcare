@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { rideEntityPaginatedMock } from "@/slices/ride/entities/RideEntity.spec";
 import { LoadRideByPageRepository } from "@/slices/ride/repositories";
 import { mock, MockProxy } from "jest-mock-extended";

@@ -28,7 +28,7 @@ describe("addOrder", () => {
         await testInstance(orderEntityMock);
 
         expect(addOrderRepository.addOrder).toHaveBeenCalledWith(
-            new OrderEntity(orderEntityMock)
+            new OrderEntity(orderEntityMock),
         );
 
         expect(addOrderRepository.addOrder).toHaveBeenCalledTimes(1);

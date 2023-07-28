@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { categoryEntityMock } from "@/slices/category/entities/CategoryEntity.spec";
 import { UpdateCategoryRepository } from "@/slices/category/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -37,7 +37,7 @@ describe("updateCategory", () => {
 
         expect(updateCategoryRepository.updateCategory).toHaveBeenCalledWith(
             fakeQuery,
-            categoryEntityMock
+            categoryEntityMock,
         );
 
         expect(updateCategoryRepository.updateCategory).toHaveBeenCalledTimes(1);
@@ -61,7 +61,7 @@ describe("updateCategory", () => {
         updateCategoryRepository.updateCategory.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery, categoryEntityMock)).rejects.toThrowError(
-            "Error"
+            "Error",
         );
     });
 });

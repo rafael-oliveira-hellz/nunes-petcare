@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { RideData } from "@/slices/ride/entities";
 import { LoadRideRepository } from "@/slices/ride/repositories";
 

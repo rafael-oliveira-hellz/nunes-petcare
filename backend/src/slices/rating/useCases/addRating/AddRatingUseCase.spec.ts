@@ -28,7 +28,7 @@ describe("addRating", () => {
         await testInstance(ratingEntityMock);
 
         expect(addRatingRepository.addRating).toHaveBeenCalledWith(
-            new RatingEntity(ratingEntityMock)
+            new RatingEntity(ratingEntityMock),
         );
 
         expect(addRatingRepository.addRating).toHaveBeenCalledTimes(1);

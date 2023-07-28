@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { ratingEntityMock } from "@/slices/rating/entities/RatingEntity.spec";
 import { UpdateRatingRepository } from "@/slices/rating/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -35,7 +35,10 @@ describe("updateRating", () => {
     it("should call updateRating of updateRatingRepository with correct values", async () => {
         await testInstance(fakeQuery, ratingEntityMock);
 
-        expect(updateRatingRepository.updateRating).toHaveBeenCalledWith(fakeQuery, ratingEntityMock);
+        expect(updateRatingRepository.updateRating).toHaveBeenCalledWith(
+            fakeQuery,
+            ratingEntityMock,
+        );
 
         expect(updateRatingRepository.updateRating).toHaveBeenCalledTimes(1);
     });
@@ -57,6 +60,8 @@ describe("updateRating", () => {
     it("should throw an error when updateRatingRepository throws an error", async () => {
         updateRatingRepository.updateRating.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, ratingEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, ratingEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

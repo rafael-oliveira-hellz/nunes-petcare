@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { customerEntityMock } from "@/slices/customer/entities/CustomerEntity.spec";
 import { UpdateCustomerRepository } from "@/slices/customer/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -35,7 +35,10 @@ describe("updateCustomer", () => {
     it("should call updateCustomer of updateCustomerRepository with correct values", async () => {
         await testInstance(fakeQuery, customerEntityMock);
 
-        expect(updateCustomerRepository.updateCustomer).toHaveBeenCalledWith(fakeQuery, customerEntityMock);
+        expect(updateCustomerRepository.updateCustomer).toHaveBeenCalledWith(
+            fakeQuery,
+            customerEntityMock,
+        );
 
         expect(updateCustomerRepository.updateCustomer).toHaveBeenCalledTimes(1);
     });
@@ -57,6 +60,8 @@ describe("updateCustomer", () => {
     it("should throw an error when updateCustomerRepository throws an error", async () => {
         updateCustomerRepository.updateCustomer.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, customerEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, customerEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

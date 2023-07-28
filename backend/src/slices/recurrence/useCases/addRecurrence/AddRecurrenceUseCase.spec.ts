@@ -28,7 +28,7 @@ describe("addRecurrence", () => {
         await testInstance(recurrenceEntityMock);
 
         expect(addRecurrenceRepository.addRecurrence).toHaveBeenCalledWith(
-            new RecurrenceEntity(recurrenceEntityMock)
+            new RecurrenceEntity(recurrenceEntityMock),
         );
 
         expect(addRecurrenceRepository.addRecurrence).toHaveBeenCalledTimes(1);

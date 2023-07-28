@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { UserPaginatedData } from "@/slices/user/entities";
 
 export interface LoadUserByPageRepository {

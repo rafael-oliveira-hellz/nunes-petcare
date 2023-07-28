@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { requestEntityMock } from "@/slices/request/entities/RequestEntity.spec";
 import { UpdateRequestRepository } from "@/slices/request/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -35,7 +35,10 @@ describe("updateRequest", () => {
     it("should call updateRequest of updateRequestRepository with correct values", async () => {
         await testInstance(fakeQuery, requestEntityMock);
 
-        expect(updateRequestRepository.updateRequest).toHaveBeenCalledWith(fakeQuery, requestEntityMock);
+        expect(updateRequestRepository.updateRequest).toHaveBeenCalledWith(
+            fakeQuery,
+            requestEntityMock,
+        );
 
         expect(updateRequestRepository.updateRequest).toHaveBeenCalledTimes(1);
     });
@@ -57,6 +60,8 @@ describe("updateRequest", () => {
     it("should throw an error when updateRequestRepository throws an error", async () => {
         updateRequestRepository.updateRequest.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, requestEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, requestEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

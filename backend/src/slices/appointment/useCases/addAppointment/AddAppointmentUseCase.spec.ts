@@ -28,7 +28,7 @@ describe("addAppointment", () => {
         await testInstance(appointmentEntityMock);
 
         expect(addAppointmentRepository.addAppointment).toHaveBeenCalledWith(
-            new AppointmentEntity(appointmentEntityMock)
+            new AppointmentEntity(appointmentEntityMock),
         );
 
         expect(addAppointmentRepository.addAppointment).toHaveBeenCalledTimes(1);

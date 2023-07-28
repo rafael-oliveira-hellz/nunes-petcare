@@ -1,9 +1,12 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { ratingResultEntityMock } from "@/slices/ratingResult/entities/RatingResultEntity.spec";
 import { UpdateRatingResultRepository } from "@/slices/ratingResult/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { updateRatingResult, updateRatingResultUsecase } from "./UpdateRatingResultUseCase";
+import {
+    updateRatingResult,
+    updateRatingResultUsecase,
+} from "./UpdateRatingResultUseCase";
 
 describe("updateRatingResult", () => {
     let fakeQuery: Query;
@@ -21,7 +24,9 @@ describe("updateRatingResult", () => {
             options: {},
         };
 
-        updateRatingResultRepository.updateRatingResult.mockResolvedValue(ratingResultEntityMock);
+        updateRatingResultRepository.updateRatingResult.mockResolvedValue(
+            ratingResultEntityMock,
+        );
     });
 
     beforeEach(() => {
@@ -35,7 +40,10 @@ describe("updateRatingResult", () => {
     it("should call updateRatingResult of updateRatingResultRepository with correct values", async () => {
         await testInstance(fakeQuery, ratingResultEntityMock);
 
-        expect(updateRatingResultRepository.updateRatingResult).toHaveBeenCalledWith(fakeQuery, ratingResultEntityMock);
+        expect(updateRatingResultRepository.updateRatingResult).toHaveBeenCalledWith(
+            fakeQuery,
+            ratingResultEntityMock,
+        );
 
         expect(updateRatingResultRepository.updateRatingResult).toHaveBeenCalledTimes(1);
     });
@@ -55,8 +63,12 @@ describe("updateRatingResult", () => {
     });
 
     it("should throw an error when updateRatingResultRepository throws an error", async () => {
-        updateRatingResultRepository.updateRatingResult.mockRejectedValue(new Error("Error"));
+        updateRatingResultRepository.updateRatingResult.mockRejectedValue(
+            new Error("Error"),
+        );
 
-        await expect(testInstance(fakeQuery, ratingResultEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, ratingResultEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

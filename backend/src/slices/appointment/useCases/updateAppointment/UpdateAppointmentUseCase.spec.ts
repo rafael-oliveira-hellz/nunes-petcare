@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { appointmentEntityMock } from "@/slices/appointment/entities/AppointmentEntity.spec";
 import { UpdateAppointmentRepository } from "@/slices/appointment/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -21,7 +21,9 @@ describe("updateAppointment", () => {
             options: {},
         };
 
-        updateAppointmentRepository.updateAppointment.mockResolvedValue(appointmentEntityMock);
+        updateAppointmentRepository.updateAppointment.mockResolvedValue(
+            appointmentEntityMock,
+        );
     });
 
     beforeEach(() => {
@@ -35,7 +37,10 @@ describe("updateAppointment", () => {
     it("should call updateAppointment of updateAppointmentRepository with correct values", async () => {
         await testInstance(fakeQuery, appointmentEntityMock);
 
-        expect(updateAppointmentRepository.updateAppointment).toHaveBeenCalledWith(fakeQuery, appointmentEntityMock);
+        expect(updateAppointmentRepository.updateAppointment).toHaveBeenCalledWith(
+            fakeQuery,
+            appointmentEntityMock,
+        );
 
         expect(updateAppointmentRepository.updateAppointment).toHaveBeenCalledTimes(1);
     });
@@ -55,8 +60,12 @@ describe("updateAppointment", () => {
     });
 
     it("should throw an error when updateAppointmentRepository throws an error", async () => {
-        updateAppointmentRepository.updateAppointment.mockRejectedValue(new Error("Error"));
+        updateAppointmentRepository.updateAppointment.mockRejectedValue(
+            new Error("Error"),
+        );
 
-        await expect(testInstance(fakeQuery, appointmentEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, appointmentEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

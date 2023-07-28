@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { recurrenceEntityMock } from "@/slices/recurrence/entities/RecurrenceEntity.spec";
 import { LoadRecurrenceRepository } from "@/slices/recurrence/repositories";
 import { mock, MockProxy } from "jest-mock-extended";

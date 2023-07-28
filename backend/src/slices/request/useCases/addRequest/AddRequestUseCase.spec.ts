@@ -28,7 +28,7 @@ describe("addRequest", () => {
         await testInstance(requestEntityMock);
 
         expect(addRequestRepository.addRequest).toHaveBeenCalledWith(
-            new RequestEntity(requestEntityMock)
+            new RequestEntity(requestEntityMock),
         );
 
         expect(addRequestRepository.addRequest).toHaveBeenCalledTimes(1);

@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { UserData } from "@/slices/user/entities";
 import { LoadUserRepository } from "@/slices/user/repositories";
 

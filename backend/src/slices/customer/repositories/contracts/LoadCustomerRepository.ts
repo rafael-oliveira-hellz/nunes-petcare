@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { CustomerData } from "@/slices/customer/entities";
 
 export interface LoadCustomerRepository {

@@ -1,8 +1,14 @@
 {
-    "trailingComma": "es5",
+    "trailingComma": "all",
     "tabWidth": 4,
     "semi": true,
     "singleQuote": false,
     "printWidth": 91,
-    "arrowParens": "always"
+    "arrowParens": "always",
+    "overrides": [
+        {
+            "files": "*.json",
+            "options": { "parser": "json" }
+        }
+    ]
 }

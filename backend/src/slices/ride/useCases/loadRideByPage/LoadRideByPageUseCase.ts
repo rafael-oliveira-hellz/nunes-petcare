@@ -1,11 +1,11 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { RidePaginatedData } from "@/slices/ride/entities";
 import { LoadRideByPageRepository } from "@/slices/ride/repositories";
 
 export type loadRideByPage = (query: Query) => Promise<RidePaginatedData | null>;
 
 export type loadRideByPageSignature = (
-    loadRideByPage: LoadRideByPageRepository
+    loadRideByPage: LoadRideByPageRepository,
 ) => loadRideByPage;
 
 export const loadRideByPageUsecase: loadRideByPageSignature =

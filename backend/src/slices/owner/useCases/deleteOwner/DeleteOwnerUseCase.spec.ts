@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { ownerEntityMock } from "@/slices/owner/entities/OwnerEntity.spec";
 import { DeleteOwnerRepository } from "@/slices/owner/repositories";
 import { mock, MockProxy } from "jest-mock-extended";

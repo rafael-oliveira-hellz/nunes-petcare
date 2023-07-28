@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { appointmentEntityMock } from "@/slices/appointment/entities/AppointmentEntity.spec";
 import { DeleteAppointmentRepository } from "@/slices/appointment/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -21,7 +21,9 @@ describe("deleteAppointment", () => {
             options: {},
         };
 
-        deleteAppointmentRepository.deleteAppointment.mockResolvedValue(appointmentEntityMock);
+        deleteAppointmentRepository.deleteAppointment.mockResolvedValue(
+            appointmentEntityMock,
+        );
     });
 
     beforeEach(() => {
@@ -35,7 +37,9 @@ describe("deleteAppointment", () => {
     it("should call deleteAppointment of deleteAppointmentRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(deleteAppointmentRepository.deleteAppointment).toHaveBeenCalledWith(fakeQuery);
+        expect(deleteAppointmentRepository.deleteAppointment).toHaveBeenCalledWith(
+            fakeQuery,
+        );
 
         expect(deleteAppointmentRepository.deleteAppointment).toHaveBeenCalledTimes(1);
     });
@@ -55,7 +59,9 @@ describe("deleteAppointment", () => {
     });
 
     it("should throw an error when deleteAppointmentRepository throws an error", async () => {
-        deleteAppointmentRepository.deleteAppointment.mockRejectedValue(new Error("Error"));
+        deleteAppointmentRepository.deleteAppointment.mockRejectedValue(
+            new Error("Error"),
+        );
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

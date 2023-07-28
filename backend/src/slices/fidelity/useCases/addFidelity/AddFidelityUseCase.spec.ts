@@ -28,7 +28,7 @@ describe("addFidelity", () => {
         await testInstance(fidelityEntityMock);
 
         expect(addFidelityRepository.addFidelity).toHaveBeenCalledWith(
-            new FidelityEntity(fidelityEntityMock)
+            new FidelityEntity(fidelityEntityMock),
         );
 
         expect(addFidelityRepository.addFidelity).toHaveBeenCalledTimes(1);

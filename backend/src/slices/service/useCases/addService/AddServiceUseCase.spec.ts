@@ -28,7 +28,7 @@ describe("addService", () => {
         await testInstance(serviceEntityMock);
 
         expect(addServiceRepository.addService).toHaveBeenCalledWith(
-            new ServiceEntity(serviceEntityMock)
+            new ServiceEntity(serviceEntityMock),
         );
 
         expect(addServiceRepository.addService).toHaveBeenCalledTimes(1);

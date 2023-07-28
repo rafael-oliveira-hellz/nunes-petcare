@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { ServicePaginatedData } from "@/slices/service/entities";
 
 export interface LoadServiceByPageRepository {

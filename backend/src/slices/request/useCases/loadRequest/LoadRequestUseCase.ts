@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { RequestData } from "@/slices/request/entities";
 import { LoadRequestRepository } from "@/slices/request/repositories";
 

@@ -1,9 +1,12 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { appointmentEntityPaginatedMock } from "@/slices/appointment/entities/AppointmentEntity.spec";
 import { LoadAppointmentByPageRepository } from "@/slices/appointment/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadAppointmentByPage, loadAppointmentByPageUsecase } from "./LoadAppointmentByPageUseCase";
+import {
+    loadAppointmentByPage,
+    loadAppointmentByPageUsecase,
+} from "./LoadAppointmentByPageUseCase";
 
 describe("loadAppointmentByPage", () => {
     let fakeQuery: Query;
@@ -21,7 +24,9 @@ describe("loadAppointmentByPage", () => {
             options: {},
         };
 
-        loadAppointmentRepository.loadByPage.mockResolvedValue(appointmentEntityPaginatedMock);
+        loadAppointmentRepository.loadByPage.mockResolvedValue(
+            appointmentEntityPaginatedMock,
+        );
     });
 
     beforeEach(() => {

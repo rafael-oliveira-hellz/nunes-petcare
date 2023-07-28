@@ -28,7 +28,7 @@ describe("addProduct", () => {
         await testInstance(productEntityMock);
 
         expect(addProductRepository.addProduct).toHaveBeenCalledWith(
-            new ProductEntity(productEntityMock)
+            new ProductEntity(productEntityMock),
         );
 
         expect(addProductRepository.addProduct).toHaveBeenCalledTimes(1);

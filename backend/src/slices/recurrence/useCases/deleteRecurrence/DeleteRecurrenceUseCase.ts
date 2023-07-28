@@ -1,11 +1,11 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { RecurrenceData } from "@/slices/recurrence/entities";
 import { DeleteRecurrenceRepository } from "@/slices/recurrence/repositories";
 
 export type deleteRecurrence = (query: Query) => Promise<RecurrenceData | null>;
 
 export type deleteRecurrenceSignature = (
-    deleteRecurrence: DeleteRecurrenceRepository
+    deleteRecurrence: DeleteRecurrenceRepository,
 ) => deleteRecurrence;
 
 export const deleteRecurrenceUsecase: deleteRecurrenceSignature =

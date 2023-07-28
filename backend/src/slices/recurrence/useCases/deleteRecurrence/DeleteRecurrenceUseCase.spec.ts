@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { recurrenceEntityMock } from "@/slices/recurrence/entities/RecurrenceEntity.spec";
 import { DeleteRecurrenceRepository } from "@/slices/recurrence/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -21,7 +21,9 @@ describe("deleteRecurrence", () => {
             options: {},
         };
 
-        deleteRecurrenceRepository.deleteRecurrence.mockResolvedValue(recurrenceEntityMock);
+        deleteRecurrenceRepository.deleteRecurrence.mockResolvedValue(
+            recurrenceEntityMock,
+        );
     });
 
     beforeEach(() => {
@@ -35,7 +37,9 @@ describe("deleteRecurrence", () => {
     it("should call deleteRecurrence of deleteRecurrenceRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(deleteRecurrenceRepository.deleteRecurrence).toHaveBeenCalledWith(fakeQuery);
+        expect(deleteRecurrenceRepository.deleteRecurrence).toHaveBeenCalledWith(
+            fakeQuery,
+        );
 
         expect(deleteRecurrenceRepository.deleteRecurrence).toHaveBeenCalledTimes(1);
     });

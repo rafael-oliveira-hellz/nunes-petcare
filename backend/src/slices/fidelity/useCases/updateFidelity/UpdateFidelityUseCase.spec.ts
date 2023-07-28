@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { fidelityEntityMock } from "@/slices/fidelity/entities/FidelityEntity.spec";
 import { UpdateFidelityRepository } from "@/slices/fidelity/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -35,7 +35,10 @@ describe("updateFidelity", () => {
     it("should call updateFidelity of updateFidelityRepository with correct values", async () => {
         await testInstance(fakeQuery, fidelityEntityMock);
 
-        expect(updateFidelityRepository.updateFidelity).toHaveBeenCalledWith(fakeQuery, fidelityEntityMock);
+        expect(updateFidelityRepository.updateFidelity).toHaveBeenCalledWith(
+            fakeQuery,
+            fidelityEntityMock,
+        );
 
         expect(updateFidelityRepository.updateFidelity).toHaveBeenCalledTimes(1);
     });
@@ -57,6 +60,8 @@ describe("updateFidelity", () => {
     it("should throw an error when updateFidelityRepository throws an error", async () => {
         updateFidelityRepository.updateFidelity.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, fidelityEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, fidelityEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

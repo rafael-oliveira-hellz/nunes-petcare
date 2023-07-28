@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { serviceEntityMock } from "@/slices/service/entities/ServiceEntity.spec";
 import { UpdateServiceRepository } from "@/slices/service/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -35,7 +35,10 @@ describe("updateService", () => {
     it("should call updateService of updateServiceRepository with correct values", async () => {
         await testInstance(fakeQuery, serviceEntityMock);
 
-        expect(updateServiceRepository.updateService).toHaveBeenCalledWith(fakeQuery, serviceEntityMock);
+        expect(updateServiceRepository.updateService).toHaveBeenCalledWith(
+            fakeQuery,
+            serviceEntityMock,
+        );
 
         expect(updateServiceRepository.updateService).toHaveBeenCalledTimes(1);
     });
@@ -57,6 +60,8 @@ describe("updateService", () => {
     it("should throw an error when updateServiceRepository throws an error", async () => {
         updateServiceRepository.updateService.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, serviceEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, serviceEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

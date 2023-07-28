@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { ownerEntityMock } from "@/slices/owner/entities/OwnerEntity.spec";
 import { UpdateOwnerRepository } from "@/slices/owner/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -35,7 +35,10 @@ describe("updateOwner", () => {
     it("should call updateOwner of updateOwnerRepository with correct values", async () => {
         await testInstance(fakeQuery, ownerEntityMock);
 
-        expect(updateOwnerRepository.updateOwner).toHaveBeenCalledWith(fakeQuery, ownerEntityMock);
+        expect(updateOwnerRepository.updateOwner).toHaveBeenCalledWith(
+            fakeQuery,
+            ownerEntityMock,
+        );
 
         expect(updateOwnerRepository.updateOwner).toHaveBeenCalledTimes(1);
     });
@@ -57,6 +60,8 @@ describe("updateOwner", () => {
     it("should throw an error when updateOwnerRepository throws an error", async () => {
         updateOwnerRepository.updateOwner.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, ownerEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, ownerEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

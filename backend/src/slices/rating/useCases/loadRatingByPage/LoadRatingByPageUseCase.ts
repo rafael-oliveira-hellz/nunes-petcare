@@ -1,11 +1,11 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { RatingPaginatedData } from "@/slices/rating/entities";
 import { LoadRatingByPageRepository } from "@/slices/rating/repositories";
 
 export type loadRatingByPage = (query: Query) => Promise<RatingPaginatedData | null>;
 
 export type loadRatingByPageSignature = (
-    loadRatingByPage: LoadRatingByPageRepository
+    loadRatingByPage: LoadRatingByPageRepository,
 ) => loadRatingByPage;
 
 export const loadRatingByPageUsecase: loadRatingByPageSignature =

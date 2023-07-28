@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { rideEntityMock } from "@/slices/ride/entities/RideEntity.spec";
 import { DeleteRideRepository } from "@/slices/ride/repositories";
 import { mock, MockProxy } from "jest-mock-extended";

@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { serviceEntityMock } from "@/slices/service/entities/ServiceEntity.spec";
 import { LoadServiceRepository } from "@/slices/service/repositories";
 import { mock, MockProxy } from "jest-mock-extended";

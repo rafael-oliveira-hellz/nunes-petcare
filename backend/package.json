@@ -4,6 +4,7 @@
     "main": "dist/index.js",
     "license": "MIT",
     "scripts": {
+        "format": "prettier --write \"src/**/**/**/*.ts\"",
         "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
         "generate": "yarn plop --plopfile ./generators/plopfile.js"
     },
@@ -25,5 +26,9 @@
     },
     "_moduleAliases": {
         "@": "dist"
+    },
+    "dependencies": {
+        "date-fns": "^2.30.0",
+        "date-fns-tz": "^2.0.0"
     }
 }

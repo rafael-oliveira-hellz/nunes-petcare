@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { fidelityEntityMock } from "@/slices/fidelity/entities/FidelityEntity.spec";
 import { DeleteFidelityRepository } from "@/slices/fidelity/repositories";
 import { mock, MockProxy } from "jest-mock-extended";

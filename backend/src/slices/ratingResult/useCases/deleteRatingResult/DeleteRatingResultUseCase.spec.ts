@@ -1,9 +1,12 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { ratingResultEntityMock } from "@/slices/ratingResult/entities/RatingResultEntity.spec";
 import { DeleteRatingResultRepository } from "@/slices/ratingResult/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { deleteRatingResult, deleteRatingResultUsecase } from "./DeleteRatingResultUseCase";
+import {
+    deleteRatingResult,
+    deleteRatingResultUsecase,
+} from "./DeleteRatingResultUseCase";
 
 describe("deleteRatingResult", () => {
     let fakeQuery: Query;
@@ -21,7 +24,9 @@ describe("deleteRatingResult", () => {
             options: {},
         };
 
-        deleteRatingResultRepository.deleteRatingResult.mockResolvedValue(ratingResultEntityMock);
+        deleteRatingResultRepository.deleteRatingResult.mockResolvedValue(
+            ratingResultEntityMock,
+        );
     });
 
     beforeEach(() => {
@@ -35,7 +40,9 @@ describe("deleteRatingResult", () => {
     it("should call deleteRatingResult of deleteRatingResultRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(deleteRatingResultRepository.deleteRatingResult).toHaveBeenCalledWith(fakeQuery);
+        expect(deleteRatingResultRepository.deleteRatingResult).toHaveBeenCalledWith(
+            fakeQuery,
+        );
 
         expect(deleteRatingResultRepository.deleteRatingResult).toHaveBeenCalledTimes(1);
     });
@@ -55,7 +62,9 @@ describe("deleteRatingResult", () => {
     });
 
     it("should throw an error when deleteRatingResultRepository throws an error", async () => {
-        deleteRatingResultRepository.deleteRatingResult.mockRejectedValue(new Error("Error"));
+        deleteRatingResultRepository.deleteRatingResult.mockRejectedValue(
+            new Error("Error"),
+        );
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

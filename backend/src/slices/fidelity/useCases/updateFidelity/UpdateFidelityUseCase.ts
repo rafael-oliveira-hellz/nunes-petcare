@@ -1,11 +1,14 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { FidelityData } from "@/slices/fidelity/entities";
 import { UpdateFidelityRepository } from "@/slices/fidelity/repositories";
 
-export type updateFidelity = (query: Query, data: FidelityData) => Promise<FidelityData | null>;
+export type updateFidelity = (
+    query: Query,
+    data: FidelityData,
+) => Promise<FidelityData | null>;
 
 export type updateFidelitySignature = (
-    updateFidelity: UpdateFidelityRepository
+    updateFidelity: UpdateFidelityRepository,
 ) => updateFidelity;
 
 export const updateFidelityUsecase: updateFidelitySignature =

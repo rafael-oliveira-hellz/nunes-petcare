@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { productEntityMock } from "@/slices/product/entities/ProductEntity.spec";
 import { UpdateProductRepository } from "@/slices/product/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -35,7 +35,10 @@ describe("updateProduct", () => {
     it("should call updateProduct of updateProductRepository with correct values", async () => {
         await testInstance(fakeQuery, productEntityMock);
 
-        expect(updateProductRepository.updateProduct).toHaveBeenCalledWith(fakeQuery, productEntityMock);
+        expect(updateProductRepository.updateProduct).toHaveBeenCalledWith(
+            fakeQuery,
+            productEntityMock,
+        );
 
         expect(updateProductRepository.updateProduct).toHaveBeenCalledTimes(1);
     });
@@ -57,6 +60,8 @@ describe("updateProduct", () => {
     it("should throw an error when updateProductRepository throws an error", async () => {
         updateProductRepository.updateProduct.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, productEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, productEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

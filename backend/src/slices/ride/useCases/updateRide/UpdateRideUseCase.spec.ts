@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { rideEntityMock } from "@/slices/ride/entities/RideEntity.spec";
 import { UpdateRideRepository } from "@/slices/ride/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -35,7 +35,10 @@ describe("updateRide", () => {
     it("should call updateRide of updateRideRepository with correct values", async () => {
         await testInstance(fakeQuery, rideEntityMock);
 
-        expect(updateRideRepository.updateRide).toHaveBeenCalledWith(fakeQuery, rideEntityMock);
+        expect(updateRideRepository.updateRide).toHaveBeenCalledWith(
+            fakeQuery,
+            rideEntityMock,
+        );
 
         expect(updateRideRepository.updateRide).toHaveBeenCalledTimes(1);
     });
@@ -57,6 +60,8 @@ describe("updateRide", () => {
     it("should throw an error when updateRideRepository throws an error", async () => {
         updateRideRepository.updateRide.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, rideEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, rideEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

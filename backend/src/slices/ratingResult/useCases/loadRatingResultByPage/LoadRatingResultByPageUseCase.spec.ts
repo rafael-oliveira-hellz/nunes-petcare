@@ -1,9 +1,12 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { ratingResultEntityPaginatedMock } from "@/slices/ratingResult/entities/RatingResultEntity.spec";
 import { LoadRatingResultByPageRepository } from "@/slices/ratingResult/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadRatingResultByPage, loadRatingResultByPageUsecase } from "./LoadRatingResultByPageUseCase";
+import {
+    loadRatingResultByPage,
+    loadRatingResultByPageUsecase,
+} from "./LoadRatingResultByPageUseCase";
 
 describe("loadRatingResultByPage", () => {
     let fakeQuery: Query;
@@ -21,7 +24,9 @@ describe("loadRatingResultByPage", () => {
             options: {},
         };
 
-        loadRatingResultRepository.loadByPage.mockResolvedValue(ratingResultEntityPaginatedMock);
+        loadRatingResultRepository.loadByPage.mockResolvedValue(
+            ratingResultEntityPaginatedMock,
+        );
     });
 
     beforeEach(() => {

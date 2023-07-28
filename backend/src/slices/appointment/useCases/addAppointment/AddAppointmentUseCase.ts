@@ -3,7 +3,9 @@ import { AddAppointmentRepository } from "@/slices/appointment/repositories";
 
 export type addAppointment = (data: AppointmentData) => Promise<AppointmentEntity | null>;
 
-export type addAppointmentSignature = (addAppointment: AddAppointmentRepository) => addAppointment;
+export type addAppointmentSignature = (
+    addAppointment: AddAppointmentRepository,
+) => addAppointment;
 
 export const addAppointmentUsecase: addAppointmentSignature =
     (addAppointment: AddAppointmentRepository) => (data: AppointmentData) => {

@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { accountEntityMock } from "@/slices/account/entities/AccountEntity.spec";
 import { UpdateAccountRepository } from "@/slices/account/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -35,7 +35,10 @@ describe("updateAccount", () => {
     it("should call updateAccount of updateAccountRepository with correct values", async () => {
         await testInstance(fakeQuery, accountEntityMock);
 
-        expect(updateAccountRepository.updateAccount).toHaveBeenCalledWith(fakeQuery, accountEntityMock);
+        expect(updateAccountRepository.updateAccount).toHaveBeenCalledWith(
+            fakeQuery,
+            accountEntityMock,
+        );
 
         expect(updateAccountRepository.updateAccount).toHaveBeenCalledTimes(1);
     });
@@ -57,6 +60,8 @@ describe("updateAccount", () => {
     it("should throw an error when updateAccountRepository throws an error", async () => {
         updateAccountRepository.updateAccount.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, accountEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, accountEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

@@ -28,7 +28,7 @@ describe("addCategory", () => {
         await testInstance(categoryEntityMock);
 
         expect(addCategoryRepository.addCategory).toHaveBeenCalledWith(
-            new CategoryEntity(categoryEntityMock)
+            new CategoryEntity(categoryEntityMock),
         );
 
         expect(addCategoryRepository.addCategory).toHaveBeenCalledTimes(1);

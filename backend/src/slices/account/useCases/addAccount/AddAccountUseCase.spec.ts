@@ -28,7 +28,7 @@ describe("addAccount", () => {
         await testInstance(accountEntityMock);
 
         expect(addAccountRepository.addAccount).toHaveBeenCalledWith(
-            new AccountEntity(accountEntityMock)
+            new AccountEntity(accountEntityMock),
         );
 
         expect(addAccountRepository.addAccount).toHaveBeenCalledTimes(1);

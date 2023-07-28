@@ -1,14 +1,14 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { CategoryData } from "@/slices/category/entities";
 import { UpdateCategoryRepository } from "@/slices/category/repositories";
 
 export type updateCategory = (
     query: Query,
-    data: CategoryData
+    data: CategoryData,
 ) => Promise<CategoryData | null>;
 
 export type updateCategorySignature = (
-    updateCategory: UpdateCategoryRepository
+    updateCategory: UpdateCategoryRepository,
 ) => updateCategory;
 
 export const updateCategoryUsecase: updateCategorySignature =

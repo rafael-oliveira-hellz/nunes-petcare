@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { accountEntityPaginatedMock } from "@/slices/account/entities/AccountEntity.spec";
 import { LoadAccountByPageRepository } from "@/slices/account/repositories";
 import { mock, MockProxy } from "jest-mock-extended";

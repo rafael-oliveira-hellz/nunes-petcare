@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { recurrenceEntityMock } from "@/slices/recurrence/entities/RecurrenceEntity.spec";
 import { UpdateRecurrenceRepository } from "@/slices/recurrence/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
@@ -21,7 +21,9 @@ describe("updateRecurrence", () => {
             options: {},
         };
 
-        updateRecurrenceRepository.updateRecurrence.mockResolvedValue(recurrenceEntityMock);
+        updateRecurrenceRepository.updateRecurrence.mockResolvedValue(
+            recurrenceEntityMock,
+        );
     });
 
     beforeEach(() => {
@@ -35,7 +37,10 @@ describe("updateRecurrence", () => {
     it("should call updateRecurrence of updateRecurrenceRepository with correct values", async () => {
         await testInstance(fakeQuery, recurrenceEntityMock);
 
-        expect(updateRecurrenceRepository.updateRecurrence).toHaveBeenCalledWith(fakeQuery, recurrenceEntityMock);
+        expect(updateRecurrenceRepository.updateRecurrence).toHaveBeenCalledWith(
+            fakeQuery,
+            recurrenceEntityMock,
+        );
 
         expect(updateRecurrenceRepository.updateRecurrence).toHaveBeenCalledTimes(1);
     });
@@ -57,6 +62,8 @@ describe("updateRecurrence", () => {
     it("should throw an error when updateRecurrenceRepository throws an error", async () => {
         updateRecurrenceRepository.updateRecurrence.mockRejectedValue(new Error("Error"));
 
-        await expect(testInstance(fakeQuery, recurrenceEntityMock)).rejects.toThrowError("Error");
+        await expect(testInstance(fakeQuery, recurrenceEntityMock)).rejects.toThrowError(
+            "Error",
+        );
     });
 });

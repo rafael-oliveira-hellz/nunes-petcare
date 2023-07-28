@@ -1,4 +1,4 @@
-import { Query } from "@/application/@types";
+import { Query } from "@/application/types";
 import { FidelityData } from "@/slices/fidelity/entities";
 
 export interface LoadFidelityRepository {
