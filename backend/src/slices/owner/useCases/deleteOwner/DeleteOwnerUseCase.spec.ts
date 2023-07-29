@@ -3,11 +3,11 @@ import { ownerEntityMock } from "@/slices/owner/entities/OwnerEntity.spec";
 import { DeleteOwnerRepository } from "@/slices/owner/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { deleteOwner, deleteOwnerUsecase } from "./DeleteOwnerUseCase";
+import { deleteOwner, DeleteOwner } from "./DeleteOwnerUseCase";
 
 describe("deleteOwner", () => {
     let fakeQuery: Query;
-    let testInstance: deleteOwner;
+    let testInstance: DeleteOwner;
     let deleteOwnerRepository: MockProxy<DeleteOwnerRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("deleteOwner", () => {
     });
 
     beforeEach(() => {
-        testInstance = deleteOwnerUsecase(deleteOwnerRepository);
+        testInstance = deleteOwner(deleteOwnerRepository);
     });
 
     afterAll(async () => {

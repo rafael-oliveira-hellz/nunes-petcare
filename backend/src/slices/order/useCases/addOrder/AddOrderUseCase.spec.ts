@@ -3,10 +3,10 @@ import { orderEntityMock } from "@/slices/order/entities/OrderEntity.spec";
 import { AddOrderRepository } from "@/slices/order/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { addOrder, addOrderUsecase } from "./AddOrderUseCase";
+import { addOrder, AddOrder } from "./AddOrderUseCase";
 
 describe("addOrder", () => {
-    let testInstance: addOrder;
+    let testInstance: AddOrder;
     let addOrderRepository: MockProxy<AddOrderRepository>;
 
     beforeAll(async () => {
@@ -17,7 +17,7 @@ describe("addOrder", () => {
     });
 
     beforeEach(() => {
-        testInstance = addOrderUsecase(addOrderRepository);
+        testInstance = addOrder(addOrderRepository);
     });
 
     afterAll(async () => {

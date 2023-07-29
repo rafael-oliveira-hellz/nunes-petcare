@@ -3,11 +3,11 @@ import { ownerEntityMock } from "@/slices/owner/entities/OwnerEntity.spec";
 import { UpdateOwnerRepository } from "@/slices/owner/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { updateOwner, updateOwnerUsecase } from "./UpdateOwnerUseCase";
+import { updateOwner, UpdateOwner } from "./UpdateOwnerUseCase";
 
 describe("updateOwner", () => {
     let fakeQuery: Query;
-    let testInstance: updateOwner;
+    let testInstance: UpdateOwner;
     let updateOwnerRepository: MockProxy<UpdateOwnerRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("updateOwner", () => {
     });
 
     beforeEach(() => {
-        testInstance = updateOwnerUsecase(updateOwnerRepository);
+        testInstance = updateOwner(updateOwnerRepository);
     });
 
     afterAll(async () => {

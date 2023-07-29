@@ -3,10 +3,10 @@ import { ownerEntityMock } from "@/slices/owner/entities/OwnerEntity.spec";
 import { AddOwnerRepository } from "@/slices/owner/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { addOwner, addOwnerUsecase } from "./AddOwnerUseCase";
+import { addOwner, AddOwner } from "./AddOwnerUseCase";
 
 describe("addOwner", () => {
-    let testInstance: addOwner;
+    let testInstance: AddOwner;
     let addOwnerRepository: MockProxy<AddOwnerRepository>;
 
     beforeAll(async () => {
@@ -17,7 +17,7 @@ describe("addOwner", () => {
     });
 
     beforeEach(() => {
-        testInstance = addOwnerUsecase(addOwnerRepository);
+        testInstance = addOwner(addOwnerRepository);
     });
 
     afterAll(async () => {

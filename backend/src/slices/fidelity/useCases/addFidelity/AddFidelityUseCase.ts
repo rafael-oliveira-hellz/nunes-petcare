@@ -1,11 +1,11 @@
 import { FidelityData, FidelityEntity } from "@/slices/fidelity/entities";
 import { AddFidelityRepository } from "@/slices/fidelity/repositories";
 
-export type addFidelity = (data: FidelityData) => Promise<FidelityEntity | null>;
+export type AddFidelity = (data: FidelityData) => Promise<FidelityEntity | null>;
 
-export type addFidelitySignature = (addFidelity: AddFidelityRepository) => addFidelity;
+export type addFidelitySignature = (addFidelity: AddFidelityRepository) => AddFidelity;
 
-export const addFidelityUsecase: addFidelitySignature =
+export const addFidelity: addFidelitySignature =
     (addFidelity: AddFidelityRepository) => (data: FidelityData) => {
         return addFidelity.addFidelity(new FidelityEntity(data));
     };

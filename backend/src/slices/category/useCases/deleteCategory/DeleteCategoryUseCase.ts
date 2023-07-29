@@ -2,11 +2,11 @@ import { Query } from "@/application/types";
 import { CategoryData } from "@/slices/category/entities";
 import { DeleteCategoryRepository } from "@/slices/category/repositories";
 
-export type deleteCategory = (query: Query) => Promise<CategoryData | null>;
+export type DeleteCategory = (query: Query) => Promise<CategoryData | null>;
 
-export type deleteCategorySignature = (deleteCategory: DeleteCategoryRepository) => deleteCategory;
+export type deleteCategorySignature = (deleteCategory: DeleteCategoryRepository) => DeleteCategory;
 
-export const deleteCategoryUsecase: deleteCategorySignature =
+export const deleteCategory: deleteCategorySignature =
     (deleteCategory: DeleteCategoryRepository) => (query: Query) => {
         return deleteCategory.deleteCategory(query);
     };

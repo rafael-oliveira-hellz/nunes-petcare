@@ -3,11 +3,11 @@ import { categoryEntityMock } from "@/slices/category/entities/CategoryEntity.sp
 import { DeleteCategoryRepository } from "@/slices/category/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { deleteCategory, deleteCategoryUsecase } from "./DeleteCategoryUseCase";
+import { deleteCategory, DeleteCategory } from "./DeleteCategoryUseCase";
 
 describe("deleteCategory", () => {
     let fakeQuery: Query;
-    let testInstance: deleteCategory;
+    let testInstance: DeleteCategory;
     let deleteCategoryRepository: MockProxy<DeleteCategoryRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("deleteCategory", () => {
     });
 
     beforeEach(() => {
-        testInstance = deleteCategoryUsecase(deleteCategoryRepository);
+        testInstance = deleteCategory(deleteCategoryRepository);
     });
 
     afterAll(async () => {

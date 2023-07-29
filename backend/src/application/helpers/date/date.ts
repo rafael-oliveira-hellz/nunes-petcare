@@ -114,45 +114,45 @@ export type CalculateTimeAvailableInput = {
 
 export const getHoursObject = (getHoursInput: GetHoursObjectInput): GetHoursObjectOutput => {
     const {
-        hourEndOne,
-        hourLunchEndOne,
-        hourLunchStartOne,
-        hourStartOne,
-        hourEndTwo,
-        hourLunchEndTwo,
-        hourLunchStartTwo,
-        hourStartTwo,
-        hourEndThree,
-        hourLunchEndThree,
-        hourLunchStartThree,
-        hourStartThree,
-        daysOne,
-        daysTwo,
-        daysThree,
+        hourEnd1,
+        hourLunchEnd1,
+        hourLunchStart1,
+        hourStart1,
+        hourEnd2,
+        hourEnd3,
+        hourLunchEnd2,
+        hourLunchEnd3,
+        hourLunchStart2,
+        hourLunchStart3,
+        hourStart2,
+        hourStart3,
+        days1,
+        days2,
+        days3,
         dayOfWeek1,
         dayOfWeek2,
         dayOfWeek3,
     } = getHoursInput || {};
-    if (daysOne && daysOne[dayOfWeek1] === true) {
+    if (days1 && days1[dayOfWeek1] === true) {
         return {
-            hourStart: hourStartOne?.split?.(":"),
-            hourEnd: hourEndOne?.split?.(":"),
-            hourLunchStart: hourLunchStartOne?.split?.(":"),
-            hourLunchEnd: hourLunchEndOne?.split?.(":"),
+            hourStart: hourStart1?.split?.(":"),
+            hourEnd: hourEnd1?.split?.(":"),
+            hourLunchStart: hourLunchStart1?.split?.(":"),
+            hourLunchEnd: hourLunchEnd1?.split?.(":"),
         };
-    } else if (daysTwo && daysTwo[dayOfWeek2] === true) {
+    } else if (days2 && days2[dayOfWeek2] === true) {
         return {
-            hourStart: hourStartTwo?.split?.(":"),
-            hourEnd: hourEndTwo?.split?.(":"),
-            hourLunchStart: hourLunchStartTwo?.split?.(":"),
-            hourLunchEnd: hourLunchEndTwo?.split?.(":"),
+            hourStart: hourStart2?.split?.(":"),
+            hourEnd: hourEnd2?.split?.(":"),
+            hourLunchStart: hourLunchStart2?.split?.(":"),
+            hourLunchEnd: hourLunchEnd2?.split?.(":"),
         };
-    } else if (daysThree && daysThree[dayOfWeek3] === true) {
+    } else if (days3 && days3[dayOfWeek3] === true) {
         return {
-            hourStart: hourStartThree?.split?.(":"),
-            hourEnd: hourEndThree?.split?.(":"),
-            hourLunchStart: hourLunchStartThree?.split?.(":"),
-            hourLunchEnd: hourLunchEndThree?.split?.(":"),
+            hourStart: hourStart3?.split?.(":"),
+            hourEnd: hourEnd3?.split?.(":"),
+            hourLunchStart: hourLunchStart3?.split?.(":"),
+            hourLunchEnd: hourLunchEnd3?.split?.(":"),
         };
     }
     return { hourStart: [], hourEnd: [], hourLunchStart: [], hourLunchEnd: [] };

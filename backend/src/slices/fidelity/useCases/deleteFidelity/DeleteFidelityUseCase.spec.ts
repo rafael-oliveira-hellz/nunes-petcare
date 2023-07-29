@@ -3,11 +3,11 @@ import { fidelityEntityMock } from "@/slices/fidelity/entities/FidelityEntity.sp
 import { DeleteFidelityRepository } from "@/slices/fidelity/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { deleteFidelity, deleteFidelityUsecase } from "./DeleteFidelityUseCase";
+import { deleteFidelity, DeleteFidelity } from "./DeleteFidelityUseCase";
 
 describe("deleteFidelity", () => {
     let fakeQuery: Query;
-    let testInstance: deleteFidelity;
+    let testInstance: DeleteFidelity;
     let deleteFidelityRepository: MockProxy<DeleteFidelityRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("deleteFidelity", () => {
     });
 
     beforeEach(() => {
-        testInstance = deleteFidelityUsecase(deleteFidelityRepository);
+        testInstance = deleteFidelity(deleteFidelityRepository);
     });
 
     afterAll(async () => {

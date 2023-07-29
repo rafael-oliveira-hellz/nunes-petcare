@@ -2,13 +2,13 @@ import { Query } from "@/application/types";
 import { AppointmentPaginatedData } from "@/slices/appointment/entities";
 import { LoadAppointmentByPageRepository } from "@/slices/appointment/repositories";
 
-export type loadAppointmentByPage = (query: Query) => Promise<AppointmentPaginatedData | null>;
+export type LoadAppointmentByPage = (query: Query) => Promise<AppointmentPaginatedData | null>;
 
 export type loadAppointmentByPageSignature = (
     loadAppointmentByPage: LoadAppointmentByPageRepository,
-) => loadAppointmentByPage;
+) => LoadAppointmentByPage;
 
-export const loadAppointmentByPageUsecase: loadAppointmentByPageSignature =
+export const loadAppointmentByPage: loadAppointmentByPageSignature =
     (loadAppointmentByPageRepository: LoadAppointmentByPageRepository) => (query: Query) => {
-        return loadAppointmentByPageRepository.loadByPage(query);
+        return loadAppointmentByPageRepository.loadAppointmentByPage(query);
     };

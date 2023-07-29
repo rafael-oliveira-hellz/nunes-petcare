@@ -2,13 +2,13 @@ import { Query } from "@/application/types";
 import { CustomerPaginatedData } from "@/slices/customer/entities";
 import { LoadCustomerByPageRepository } from "@/slices/customer/repositories";
 
-export type loadCustomerByPage = (query: Query) => Promise<CustomerPaginatedData | null>;
+export type LoadCustomerByPage = (query: Query) => Promise<CustomerPaginatedData | null>;
 
 export type loadCustomerByPageSignature = (
     loadCustomerByPage: LoadCustomerByPageRepository,
-) => loadCustomerByPage;
+) => LoadCustomerByPage;
 
-export const loadCustomerByPageUsecase: loadCustomerByPageSignature =
+export const loadCustomerByPage: loadCustomerByPageSignature =
     (loadCustomerByPageRepository: LoadCustomerByPageRepository) => (query: Query) => {
-        return loadCustomerByPageRepository.loadByPage(query);
+        return loadCustomerByPageRepository.loadCustomerByPage(query);
     };

@@ -3,11 +3,11 @@ import { ownerEntityMock } from "@/slices/owner/entities/OwnerEntity.spec";
 import { LoadOwnerRepository } from "@/slices/owner/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadOwner, loadOwnerUsecase } from "./LoadOwnerUseCase";
+import { loadOwner, LoadOwner } from "./LoadOwnerUseCase";
 
 describe("loadOwner", () => {
     let fakeQuery: Query;
-    let testInstance: loadOwner;
+    let testInstance: LoadOwner;
     let loadOwnerRepository: MockProxy<LoadOwnerRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("loadOwner", () => {
     });
 
     beforeEach(() => {
-        testInstance = loadOwnerUsecase(loadOwnerRepository);
+        testInstance = loadOwner(loadOwnerRepository);
     });
 
     afterAll(async () => {

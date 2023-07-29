@@ -3,14 +3,11 @@ import { appointmentEntityPaginatedMock } from "@/slices/appointment/entities/Ap
 import { LoadAppointmentByPageRepository } from "@/slices/appointment/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import {
-    loadAppointmentByPage,
-    loadAppointmentByPageUsecase,
-} from "./LoadAppointmentByPageUseCase";
+import { loadAppointmentByPage, LoadAppointmentByPage } from "./LoadAppointmentByPageUseCase";
 
 describe("loadAppointmentByPage", () => {
     let fakeQuery: Query;
-    let testInstance: loadAppointmentByPage;
+    let testInstance: LoadAppointmentByPage;
     let loadAppointmentRepository: MockProxy<LoadAppointmentByPageRepository>;
 
     beforeAll(async () => {
@@ -24,11 +21,13 @@ describe("loadAppointmentByPage", () => {
             options: {},
         };
 
-        loadAppointmentRepository.loadByPage.mockResolvedValue(appointmentEntityPaginatedMock);
+        loadAppointmentRepository.loadAppointmentByPage.mockResolvedValue(
+            appointmentEntityPaginatedMock,
+        );
     });
 
     beforeEach(() => {
-        testInstance = loadAppointmentByPageUsecase(loadAppointmentRepository);
+        testInstance = loadAppointmentByPage(loadAppointmentRepository);
     });
 
     afterAll(async () => {
@@ -38,9 +37,9 @@ describe("loadAppointmentByPage", () => {
     it("should call loadAppointmentByPage of loadAppointmentRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(loadAppointmentRepository.loadByPage).toHaveBeenCalledWith(fakeQuery);
+        expect(loadAppointmentRepository.loadAppointmentByPage).toHaveBeenCalledWith(fakeQuery);
 
-        expect(loadAppointmentRepository.loadByPage).toHaveBeenCalledTimes(1);
+        expect(loadAppointmentRepository.loadAppointmentByPage).toHaveBeenCalledTimes(1);
     });
 
     it("should return a appointment when loadAppointmentRepository loads it", async () => {
@@ -50,7 +49,7 @@ describe("loadAppointmentByPage", () => {
     });
 
     it("should return null when loadAppointmentRepository fails to load", async () => {
-        loadAppointmentRepository.loadByPage.mockResolvedValue(null);
+        loadAppointmentRepository.loadAppointmentByPage.mockResolvedValue(null);
 
         const appointment = await testInstance(fakeQuery);
 
@@ -58,7 +57,7 @@ describe("loadAppointmentByPage", () => {
     });
 
     it("should throw an error when loadAppointmentRepository throws an error", async () => {
-        loadAppointmentRepository.loadByPage.mockRejectedValue(new Error("Error"));
+        loadAppointmentRepository.loadAppointmentByPage.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

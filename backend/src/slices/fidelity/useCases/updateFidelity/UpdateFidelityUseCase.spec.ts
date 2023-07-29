@@ -3,11 +3,11 @@ import { fidelityEntityMock } from "@/slices/fidelity/entities/FidelityEntity.sp
 import { UpdateFidelityRepository } from "@/slices/fidelity/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { updateFidelity, updateFidelityUsecase } from "./UpdateFidelityUseCase";
+import { updateFidelity, UpdateFidelity } from "./UpdateFidelityUseCase";
 
 describe("updateFidelity", () => {
     let fakeQuery: Query;
-    let testInstance: updateFidelity;
+    let testInstance: UpdateFidelity;
     let updateFidelityRepository: MockProxy<UpdateFidelityRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("updateFidelity", () => {
     });
 
     beforeEach(() => {
-        testInstance = updateFidelityUsecase(updateFidelityRepository);
+        testInstance = updateFidelity(updateFidelityRepository);
     });
 
     afterAll(async () => {

@@ -3,11 +3,11 @@ import { fidelityEntityPaginatedMock } from "@/slices/fidelity/entities/Fidelity
 import { LoadFidelityByPageRepository } from "@/slices/fidelity/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadFidelityByPage, loadFidelityByPageUsecase } from "./LoadFidelityByPageUseCase";
+import { loadFidelityByPage, LoadFidelityByPage } from "./LoadFidelityByPageUseCase";
 
 describe("loadFidelityByPage", () => {
     let fakeQuery: Query;
-    let testInstance: loadFidelityByPage;
+    let testInstance: LoadFidelityByPage;
     let loadFidelityRepository: MockProxy<LoadFidelityByPageRepository>;
 
     beforeAll(async () => {
@@ -21,11 +21,11 @@ describe("loadFidelityByPage", () => {
             options: {},
         };
 
-        loadFidelityRepository.loadByPage.mockResolvedValue(fidelityEntityPaginatedMock);
+        loadFidelityRepository.loadFidelityByPage.mockResolvedValue(fidelityEntityPaginatedMock);
     });
 
     beforeEach(() => {
-        testInstance = loadFidelityByPageUsecase(loadFidelityRepository);
+        testInstance = loadFidelityByPage(loadFidelityRepository);
     });
 
     afterAll(async () => {
@@ -35,9 +35,9 @@ describe("loadFidelityByPage", () => {
     it("should call loadFidelityByPage of loadFidelityRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(loadFidelityRepository.loadByPage).toHaveBeenCalledWith(fakeQuery);
+        expect(loadFidelityRepository.loadFidelityByPage).toHaveBeenCalledWith(fakeQuery);
 
-        expect(loadFidelityRepository.loadByPage).toHaveBeenCalledTimes(1);
+        expect(loadFidelityRepository.loadFidelityByPage).toHaveBeenCalledTimes(1);
     });
 
     it("should return a fidelity when loadFidelityRepository loads it", async () => {
@@ -47,7 +47,7 @@ describe("loadFidelityByPage", () => {
     });
 
     it("should return null when loadFidelityRepository fails to load", async () => {
-        loadFidelityRepository.loadByPage.mockResolvedValue(null);
+        loadFidelityRepository.loadFidelityByPage.mockResolvedValue(null);
 
         const fidelity = await testInstance(fakeQuery);
 
@@ -55,7 +55,7 @@ describe("loadFidelityByPage", () => {
     });
 
     it("should throw an error when loadFidelityRepository throws an error", async () => {
-        loadFidelityRepository.loadByPage.mockRejectedValue(new Error("Error"));
+        loadFidelityRepository.loadFidelityByPage.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

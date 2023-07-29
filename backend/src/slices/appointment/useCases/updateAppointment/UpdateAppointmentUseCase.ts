@@ -2,16 +2,16 @@ import { Query } from "@/application/types";
 import { AppointmentData } from "@/slices/appointment/entities";
 import { UpdateAppointmentRepository } from "@/slices/appointment/repositories";
 
-export type updateAppointment = (
+export type UpdateAppointment = (
     query: Query,
     data: AppointmentData,
 ) => Promise<AppointmentData | null>;
 
 export type updateAppointmentSignature = (
     updateAppointment: UpdateAppointmentRepository,
-) => updateAppointment;
+) => UpdateAppointment;
 
-export const updateAppointmentUsecase: updateAppointmentSignature =
+export const updateAppointment: updateAppointmentSignature =
     (updateAppointment: UpdateAppointmentRepository) => (query: Query, data: AppointmentData) => {
         return updateAppointment.updateAppointment(query, data);
     };

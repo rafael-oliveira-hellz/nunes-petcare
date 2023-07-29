@@ -3,11 +3,11 @@ import { accountEntityMock } from "@/slices/account/entities/AccountEntity.spec"
 import { LoadAccountRepository } from "@/slices/account/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadAccount, loadAccountUsecase } from "./LoadAccountUseCase";
+import { loadAccount, LoadAccount } from "./LoadAccountUseCase";
 
 describe("loadAccount", () => {
     let fakeQuery: Query;
-    let testInstance: loadAccount;
+    let testInstance: LoadAccount;
     let loadAccountRepository: MockProxy<LoadAccountRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("loadAccount", () => {
     });
 
     beforeEach(() => {
-        testInstance = loadAccountUsecase(loadAccountRepository);
+        testInstance = loadAccount(loadAccountRepository);
     });
 
     afterAll(async () => {

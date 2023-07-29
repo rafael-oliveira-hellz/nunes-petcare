@@ -3,10 +3,10 @@ import { categoryEntityMock } from "@/slices/category/entities/CategoryEntity.sp
 import { AddCategoryRepository } from "@/slices/category/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { addCategory, addCategoryUsecase } from "./AddCategoryUseCase";
+import { addCategory, AddCategory } from "./AddCategoryUseCase";
 
 describe("addCategory", () => {
-    let testInstance: addCategory;
+    let testInstance: AddCategory;
     let addCategoryRepository: MockProxy<AddCategoryRepository>;
 
     beforeAll(async () => {
@@ -17,7 +17,7 @@ describe("addCategory", () => {
     });
 
     beforeEach(() => {
-        testInstance = addCategoryUsecase(addCategoryRepository);
+        testInstance = addCategory(addCategoryRepository);
     });
 
     afterAll(async () => {

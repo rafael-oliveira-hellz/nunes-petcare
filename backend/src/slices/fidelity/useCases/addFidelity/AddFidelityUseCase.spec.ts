@@ -3,10 +3,10 @@ import { fidelityEntityMock } from "@/slices/fidelity/entities/FidelityEntity.sp
 import { AddFidelityRepository } from "@/slices/fidelity/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { addFidelity, addFidelityUsecase } from "./AddFidelityUseCase";
+import { addFidelity, AddFidelity } from "./AddFidelityUseCase";
 
 describe("addFidelity", () => {
-    let testInstance: addFidelity;
+    let testInstance: AddFidelity;
     let addFidelityRepository: MockProxy<AddFidelityRepository>;
 
     beforeAll(async () => {
@@ -17,7 +17,7 @@ describe("addFidelity", () => {
     });
 
     beforeEach(() => {
-        testInstance = addFidelityUsecase(addFidelityRepository);
+        testInstance = addFidelity(addFidelityRepository);
     });
 
     afterAll(async () => {

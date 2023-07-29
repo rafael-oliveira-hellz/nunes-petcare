@@ -287,31 +287,31 @@ describe("dateFns functions", () => {
     });
 
     test("dayOfWeek function when the day passed is friday", () => {
-        expect(dayOfWeek(new Date(2021, 9, 15))).toBe("sexta-feira");
+        expect(dayOfWeek(new Date(2021, 9, 15))).toBe("friday");
     });
 
     test("dayOfWeek function when the day passed is saturday", () => {
-        expect(dayOfWeek(new Date(2021, 9, 16))).toBe("sábado");
+        expect(dayOfWeek(new Date(2021, 9, 16))).toBe("saturday");
     });
 
     test("dayOfWeek function when the day passed is sunday", () => {
-        expect(dayOfWeek(new Date(2021, 9, 17))).toBe("domingo");
+        expect(dayOfWeek(new Date(2021, 9, 17))).toBe("sunday");
     });
 
     test("dayOfWeek function when the day passed is monday", () => {
-        expect(dayOfWeek(new Date(2021, 9, 18))).toBe("segunda-feira");
+        expect(dayOfWeek(new Date(2021, 9, 18))).toBe("monday");
     });
 
     test("dayOfWeek function when the day passed is tuesday", () => {
-        expect(dayOfWeek(new Date(2021, 9, 19))).toBe("terça-feira");
+        expect(dayOfWeek(new Date(2021, 9, 19))).toBe("tuesday");
     });
 
     test("dayOfWeek function when the day passed is wednesday", () => {
-        expect(dayOfWeek(new Date(2021, 9, 20))).toBe("quarta-feira");
+        expect(dayOfWeek(new Date(2021, 9, 20))).toBe("wednesday");
     });
 
     test("dayOfWeek function when the day passed is thursday", () => {
-        expect(dayOfWeek(new Date(2021, 9, 21))).toBe("quinta-feira");
+        expect(dayOfWeek(new Date(2021, 9, 21))).toBe("thursday");
     });
 
     test("subMinutes function", () => {

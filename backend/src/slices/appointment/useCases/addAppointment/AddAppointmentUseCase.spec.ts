@@ -3,10 +3,10 @@ import { appointmentEntityMock } from "@/slices/appointment/entities/Appointment
 import { AddAppointmentRepository } from "@/slices/appointment/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { addAppointment, addAppointmentUsecase } from "./AddAppointmentUseCase";
+import { addAppointment, AddAppointment } from "./AddAppointmentUseCase";
 
 describe("addAppointment", () => {
-    let testInstance: addAppointment;
+    let testInstance: AddAppointment;
     let addAppointmentRepository: MockProxy<AddAppointmentRepository>;
 
     beforeAll(async () => {
@@ -17,7 +17,7 @@ describe("addAppointment", () => {
     });
 
     beforeEach(() => {
-        testInstance = addAppointmentUsecase(addAppointmentRepository);
+        testInstance = addAppointment(addAppointmentRepository);
     });
 
     afterAll(async () => {

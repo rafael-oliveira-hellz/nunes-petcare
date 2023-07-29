@@ -3,11 +3,11 @@ import { orderEntityPaginatedMock } from "@/slices/order/entities/OrderEntity.sp
 import { LoadOrderByPageRepository } from "@/slices/order/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadOrderByPage, loadOrderByPageUsecase } from "./LoadOrderByPageUseCase";
+import { loadOrderByPage, LoadOrderByPage } from "./LoadOrderByPageUseCase";
 
 describe("loadOrderByPage", () => {
     let fakeQuery: Query;
-    let testInstance: loadOrderByPage;
+    let testInstance: LoadOrderByPage;
     let loadOrderRepository: MockProxy<LoadOrderByPageRepository>;
 
     beforeAll(async () => {
@@ -21,11 +21,11 @@ describe("loadOrderByPage", () => {
             options: {},
         };
 
-        loadOrderRepository.loadByPage.mockResolvedValue(orderEntityPaginatedMock);
+        loadOrderRepository.loadOrderByPage.mockResolvedValue(orderEntityPaginatedMock);
     });
 
     beforeEach(() => {
-        testInstance = loadOrderByPageUsecase(loadOrderRepository);
+        testInstance = loadOrderByPage(loadOrderRepository);
     });
 
     afterAll(async () => {
@@ -35,9 +35,9 @@ describe("loadOrderByPage", () => {
     it("should call loadOrderByPage of loadOrderRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(loadOrderRepository.loadByPage).toHaveBeenCalledWith(fakeQuery);
+        expect(loadOrderRepository.loadOrderByPage).toHaveBeenCalledWith(fakeQuery);
 
-        expect(loadOrderRepository.loadByPage).toHaveBeenCalledTimes(1);
+        expect(loadOrderRepository.loadOrderByPage).toHaveBeenCalledTimes(1);
     });
 
     it("should return a order when loadOrderRepository loads it", async () => {
@@ -47,7 +47,7 @@ describe("loadOrderByPage", () => {
     });
 
     it("should return null when loadOrderRepository fails to load", async () => {
-        loadOrderRepository.loadByPage.mockResolvedValue(null);
+        loadOrderRepository.loadOrderByPage.mockResolvedValue(null);
 
         const order = await testInstance(fakeQuery);
 
@@ -55,7 +55,7 @@ describe("loadOrderByPage", () => {
     });
 
     it("should throw an error when loadOrderRepository throws an error", async () => {
-        loadOrderRepository.loadByPage.mockRejectedValue(new Error("Error"));
+        loadOrderRepository.loadOrderByPage.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

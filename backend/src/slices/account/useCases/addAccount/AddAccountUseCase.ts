@@ -1,11 +1,11 @@
 import { AccountData, AccountEntity } from "@/slices/account/entities";
 import { AddAccountRepository } from "@/slices/account/repositories";
 
-export type addAccount = (data: AccountData) => Promise<AccountEntity | null>;
+export type AddAccount = (data: AccountData) => Promise<AccountEntity | null>;
 
-export type addAccountSignature = (addAccount: AddAccountRepository) => addAccount;
+export type addAccountSignature = (addAccount: AddAccountRepository) => AddAccount;
 
-export const addAccountUsecase: addAccountSignature =
+export const addAccount: addAccountSignature =
     (addAccount: AddAccountRepository) => (data: AccountData) => {
         return addAccount.addAccount(new AccountEntity(data));
     };

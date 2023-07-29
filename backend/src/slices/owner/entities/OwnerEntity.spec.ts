@@ -1,53 +1,34 @@
-import MockDate from "mockdate";
 import { OwnerEntity } from "./OwnerEntity";
+import MockDate from "mockdate";
 
 export const ownerEntityMock = {
-    _id: "5f7b5f9b0b9b9b0b9b0b9b0b",
-    createdById: "5f7b5f9b0b9b9b0b9b0b9b0b",
-    name: "Owner name",
-    totalAppointments: 0,
-    totalRatings: 0,
-    hasDelivery: true,
-    typeTax: "fixed",
-    costByTimeDriving: 0,
-    fidelityTaxPoints: 0,
-    fixedTax: 0,
-    minimumTimeForRescheduling: 0,
-    description: "Owner description",
-    daysOne: {
-        mondayOne: true,
-        tuesdayOne: true,
-        wednesdayOne: true,
-        thursdayOne: true,
-        fridayOne: true,
-        saturdayOne: true,
-        sundayOne: false,
-    },
-    daysTwo: [],
-    hoursStartOne: "00:00",
-    hoursEndOne: "23:59",
-    hoursStartTwo: "00:00",
-    hoursEndTwo: "00:00",
-    hourLunchStartOne: "00:00",
-    hourLunchEndOne: "00:00",
-    hourLunchStartTwo: "00:00",
-    hourLunchEndTwo: "00:00",
-    daysThree: [],
-    daysFour: [],
-    hoursStartThree: "00:00",
-    hoursEndThree: "00:00",
-    hoursStartFour: "00:00",
-    hoursEndFour: "00:00",
-    hourLunchStartThree: "00:00",
-    hourLunchEndThree: "00:00",
-    hourLunchStartFour: "00:00",
-    hourLunchEndFour: "00:00",
+    _id: "123",
+    createdById: "123",
+    name: "fakeOwnerEntity",
     active: true,
     createdAt: new Date(),
     updatedAt: new Date(),
+    costByTimeDriving: 1.2,
+    minimumTimeForReSchedule: 50,
+    fidelityTaxPoints: 20,
+    appointmentsTotal: 3,
+    ratingsTotal: 4,
+    haveDelivery: true,
+    days1: {
+        monday1: true,
+        sunday1: true,
+        tuesday1: true,
+        thursday1: true,
+        friday1: true,
+        wednesday1: true,
+        saturday1: true,
+    },
+    hourEnd1: "23:59",
+    hourStart1: "00:00",
+    typeTax: "fixed",
 };
-
 export const ownerEntityPaginatedMock = {
+    total: 11,
     owners: [
         ownerEntityMock,
         ownerEntityMock,
@@ -60,30 +41,25 @@ export const ownerEntityPaginatedMock = {
         ownerEntityMock,
         ownerEntityMock,
         ownerEntityMock,
-        ownerEntityMock,
-        ownerEntityMock,
-        ownerEntityMock,
-        ownerEntityMock,
     ],
-    total: 15,
 };
 
-describe("OwnerEntity", () => {
-    beforeAll(() => {
+describe("Owner", () => {
+    beforeAll(async () => {
         MockDate.set(new Date());
     });
-
-    afterAll(() => {
+    afterAll(async () => {
         MockDate.reset();
     });
-
-    it("should create a Owner entity", () => {
-        const ownerEntity = new OwnerEntity(ownerEntityMock);
-        expect(ownerEntity).toBeTruthy();
-        expect(ownerEntity).toEqual({
+    it("can be created", () => {
+        const obj = new OwnerEntity(ownerEntityMock);
+        expect(obj).toBeTruthy();
+        expect(obj).toEqual({
             ...ownerEntityMock,
             _id: undefined,
-            active: false,
+            active: true,
+            appointmentsTotal: 0,
+            ratingsTotal: 0,
             createdAt: new Date(),
             updatedAt: new Date(),
         });

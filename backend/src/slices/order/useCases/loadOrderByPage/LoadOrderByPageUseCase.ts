@@ -2,13 +2,13 @@ import { Query } from "@/application/types";
 import { OrderPaginatedData } from "@/slices/order/entities";
 import { LoadOrderByPageRepository } from "@/slices/order/repositories";
 
-export type loadOrderByPage = (query: Query) => Promise<OrderPaginatedData | null>;
+export type LoadOrderByPage = (query: Query) => Promise<OrderPaginatedData | null>;
 
 export type loadOrderByPageSignature = (
     loadOrderByPage: LoadOrderByPageRepository,
-) => loadOrderByPage;
+) => LoadOrderByPage;
 
-export const loadOrderByPageUsecase: loadOrderByPageSignature =
+export const loadOrderByPage: loadOrderByPageSignature =
     (loadOrderByPageRepository: LoadOrderByPageRepository) => (query: Query) => {
-        return loadOrderByPageRepository.loadByPage(query);
+        return loadOrderByPageRepository.loadOrderByPage(query);
     };

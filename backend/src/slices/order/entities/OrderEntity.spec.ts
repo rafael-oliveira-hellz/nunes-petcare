@@ -2,6 +2,7 @@ import MockDate from "mockdate";
 import { OrderEntity } from "./OrderEntity";
 
 export const orderEntityMock = {
+    _id: "5f7b5f9b0b9b9b0b9b0b9b0b",
     createdById: "5f7b5f9b0b9b9b0b9b0b9b0b",
     name: "Order name",
     percentageAdopted: 10,

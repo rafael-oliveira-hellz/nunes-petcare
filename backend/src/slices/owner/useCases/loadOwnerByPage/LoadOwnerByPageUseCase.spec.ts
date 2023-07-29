@@ -3,11 +3,11 @@ import { ownerEntityPaginatedMock } from "@/slices/owner/entities/OwnerEntity.sp
 import { LoadOwnerByPageRepository } from "@/slices/owner/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadOwnerByPage, loadOwnerByPageUsecase } from "./LoadOwnerByPageUseCase";
+import { loadOwnerByPage, LoadOwnerByPage } from "./LoadOwnerByPageUseCase";
 
 describe("loadOwnerByPage", () => {
     let fakeQuery: Query;
-    let testInstance: loadOwnerByPage;
+    let testInstance: LoadOwnerByPage;
     let loadOwnerRepository: MockProxy<LoadOwnerByPageRepository>;
 
     beforeAll(async () => {
@@ -21,11 +21,11 @@ describe("loadOwnerByPage", () => {
             options: {},
         };
 
-        loadOwnerRepository.loadByPage.mockResolvedValue(ownerEntityPaginatedMock);
+        loadOwnerRepository.loadOwnerByPage.mockResolvedValue(ownerEntityPaginatedMock);
     });
 
     beforeEach(() => {
-        testInstance = loadOwnerByPageUsecase(loadOwnerRepository);
+        testInstance = loadOwnerByPage(loadOwnerRepository);
     });
 
     afterAll(async () => {
@@ -35,9 +35,9 @@ describe("loadOwnerByPage", () => {
     it("should call loadOwnerByPage of loadOwnerRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(loadOwnerRepository.loadByPage).toHaveBeenCalledWith(fakeQuery);
+        expect(loadOwnerRepository.loadOwnerByPage).toHaveBeenCalledWith(fakeQuery);
 
-        expect(loadOwnerRepository.loadByPage).toHaveBeenCalledTimes(1);
+        expect(loadOwnerRepository.loadOwnerByPage).toHaveBeenCalledTimes(1);
     });
 
     it("should return a owner when loadOwnerRepository loads it", async () => {
@@ -47,7 +47,7 @@ describe("loadOwnerByPage", () => {
     });
 
     it("should return null when loadOwnerRepository fails to load", async () => {
-        loadOwnerRepository.loadByPage.mockResolvedValue(null);
+        loadOwnerRepository.loadOwnerByPage.mockResolvedValue(null);
 
         const owner = await testInstance(fakeQuery);
 
@@ -55,7 +55,7 @@ describe("loadOwnerByPage", () => {
     });
 
     it("should throw an error when loadOwnerRepository throws an error", async () => {
-        loadOwnerRepository.loadByPage.mockRejectedValue(new Error("Error"));
+        loadOwnerRepository.loadOwnerByPage.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

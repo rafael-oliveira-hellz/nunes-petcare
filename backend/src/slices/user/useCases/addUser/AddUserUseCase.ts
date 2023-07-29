@@ -1,11 +1,12 @@
-import { UserData, UserEntity } from "@/slices/user/entities";
 import { AddUserRepository } from "@/slices/user/repositories";
+import { UserEntity, UserData } from "@/slices/user/entities";
+import { Encrypter } from "@/application/infra";
 
-export type addUser = (data: UserData) => Promise<UserEntity | null>;
+export type AddUser = (data: UserData) => Promise<UserEntity | null>;
+export type AddUserSignature = (addUser: AddUserRepository, encrypter: Encrypter) => AddUser;
 
-export type addUserSignature = (addUser: AddUserRepository) => addUser;
-
-export const addUserUsecase: addUserSignature =
-    (addUser: AddUserRepository) => (data: UserData) => {
-        return addUser.addUser(new UserEntity(data));
+export const addUser: AddUserSignature =
+    (addUserRepository: AddUserRepository, encrypter: Encrypter) => async (data: UserData) => {
+        const hashedText = data.password && (await encrypter.encrypt(data.password));
+        return addUserRepository.addUser(new UserEntity({ ...data, password: hashedText }));
     };

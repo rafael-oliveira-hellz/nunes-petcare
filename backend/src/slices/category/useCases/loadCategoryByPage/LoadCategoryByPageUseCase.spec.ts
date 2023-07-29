@@ -3,11 +3,11 @@ import { categoryEntityPaginatedMock } from "@/slices/category/entities/Category
 import { LoadCategoryByPageRepository } from "@/slices/category/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadCategoryByPage, loadCategoryByPageUsecase } from "./LoadCategoryByPageUseCase";
+import { loadCategoryByPage, LoadCategoryByPage } from "./LoadCategoryByPageUseCase";
 
 describe("loadCategoryByPage", () => {
     let fakeQuery: Query;
-    let testInstance: loadCategoryByPage;
+    let testInstance: LoadCategoryByPage;
     let loadCategoryRepository: MockProxy<LoadCategoryByPageRepository>;
 
     beforeAll(async () => {
@@ -21,11 +21,11 @@ describe("loadCategoryByPage", () => {
             options: {},
         };
 
-        loadCategoryRepository.loadByPage.mockResolvedValue(categoryEntityPaginatedMock);
+        loadCategoryRepository.loadCategoryByPage.mockResolvedValue(categoryEntityPaginatedMock);
     });
 
     beforeEach(() => {
-        testInstance = loadCategoryByPageUsecase(loadCategoryRepository);
+        testInstance = loadCategoryByPage(loadCategoryRepository);
     });
 
     afterAll(async () => {
@@ -35,9 +35,9 @@ describe("loadCategoryByPage", () => {
     it("should call loadCategoryByPage of loadCategoryRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(loadCategoryRepository.loadByPage).toHaveBeenCalledWith(fakeQuery);
+        expect(loadCategoryRepository.loadCategoryByPage).toHaveBeenCalledWith(fakeQuery);
 
-        expect(loadCategoryRepository.loadByPage).toHaveBeenCalledTimes(1);
+        expect(loadCategoryRepository.loadCategoryByPage).toHaveBeenCalledTimes(1);
     });
 
     it("should return a category when loadCategoryRepository loads it", async () => {
@@ -47,7 +47,7 @@ describe("loadCategoryByPage", () => {
     });
 
     it("should return null when loadCategoryRepository fails to load", async () => {
-        loadCategoryRepository.loadByPage.mockResolvedValue(null);
+        loadCategoryRepository.loadCategoryByPage.mockResolvedValue(null);
 
         const category = await testInstance(fakeQuery);
 
@@ -55,7 +55,7 @@ describe("loadCategoryByPage", () => {
     });
 
     it("should throw an error when loadCategoryRepository throws an error", async () => {
-        loadCategoryRepository.loadByPage.mockRejectedValue(new Error("Error"));
+        loadCategoryRepository.loadCategoryByPage.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

@@ -3,11 +3,11 @@ import { orderEntityMock } from "@/slices/order/entities/OrderEntity.spec";
 import { DeleteOrderRepository } from "@/slices/order/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { deleteOrder, deleteOrderUsecase } from "./DeleteOrderUseCase";
+import { deleteOrder, DeleteOrder } from "./DeleteOrderUseCase";
 
 describe("deleteOrder", () => {
     let fakeQuery: Query;
-    let testInstance: deleteOrder;
+    let testInstance: DeleteOrder;
     let deleteOrderRepository: MockProxy<DeleteOrderRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("deleteOrder", () => {
     });
 
     beforeEach(() => {
-        testInstance = deleteOrderUsecase(deleteOrderRepository);
+        testInstance = deleteOrder(deleteOrderRepository);
     });
 
     afterAll(async () => {

@@ -2,11 +2,11 @@ import { Query } from "@/application/types";
 import { OwnerData } from "@/slices/owner/entities";
 import { LoadOwnerRepository } from "@/slices/owner/repositories";
 
-export type loadOwner = (query: Query) => Promise<OwnerData | null>;
+export type LoadOwner = (query: Query) => Promise<OwnerData | null>;
 
-export type loadOwnerSignature = (loadOwner: LoadOwnerRepository) => loadOwner;
+export type loadOwnerSignature = (loadOwner: LoadOwnerRepository) => LoadOwner;
 
-export const loadOwnerUsecase: loadOwnerSignature =
+export const loadOwner: loadOwnerSignature =
     (loadOwnerRepository: LoadOwnerRepository) => (query: Query) => {
         return loadOwnerRepository.loadOwner(query);
     };

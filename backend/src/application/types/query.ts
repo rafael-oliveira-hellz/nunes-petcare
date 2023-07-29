@@ -8,6 +8,6 @@ export type QueryOptions = {
     sort?: unknown;
     page?: number;
     limit?: number;
-    userLoggedIn?: string;
+    userLoggedId?: string;
     indexToCreate?: any;
 };

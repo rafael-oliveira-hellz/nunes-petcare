@@ -10,5 +10,5 @@ export type loadServiceByPageSignature = (
 
 export const loadServiceByPageUsecase: loadServiceByPageSignature =
     (loadServiceByPageRepository: LoadServiceByPageRepository) => (query: Query) => {
-        return loadServiceByPageRepository.loadByPage(query);
+        return loadServiceByPageRepository.loadServiceByPage(query);
     };

@@ -3,11 +3,11 @@ import { accountEntityMock } from "@/slices/account/entities/AccountEntity.spec"
 import { UpdateAccountRepository } from "@/slices/account/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { updateAccount, updateAccountUsecase } from "./UpdateAccountUseCase";
+import { UpdateAccount, updateAccount } from "./UpdateAccountUseCase";
 
 describe("updateAccount", () => {
     let fakeQuery: Query;
-    let testInstance: updateAccount;
+    let testInstance: UpdateAccount;
     let updateAccountRepository: MockProxy<UpdateAccountRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("updateAccount", () => {
     });
 
     beforeEach(() => {
-        testInstance = updateAccountUsecase(updateAccountRepository);
+        testInstance = updateAccount(updateAccountRepository);
     });
 
     afterAll(async () => {

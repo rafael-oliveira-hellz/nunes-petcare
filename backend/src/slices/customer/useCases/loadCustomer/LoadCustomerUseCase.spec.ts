@@ -3,11 +3,11 @@ import { customerEntityMock } from "@/slices/customer/entities/CustomerEntity.sp
 import { LoadCustomerRepository } from "@/slices/customer/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadCustomer, loadCustomerUsecase } from "./LoadCustomerUseCase";
+import { loadCustomer, LoadCustomer } from "./LoadCustomerUseCase";
 
 describe("loadCustomer", () => {
     let fakeQuery: Query;
-    let testInstance: loadCustomer;
+    let testInstance: LoadCustomer;
     let loadCustomerRepository: MockProxy<LoadCustomerRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("loadCustomer", () => {
     });
 
     beforeEach(() => {
-        testInstance = loadCustomerUsecase(loadCustomerRepository);
+        testInstance = loadCustomer(loadCustomerRepository);
     });
 
     afterAll(async () => {

@@ -3,10 +3,10 @@ import { accountEntityMock } from "@/slices/account/entities/AccountEntity.spec"
 import { AddAccountRepository } from "@/slices/account/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { addAccount, addAccountUsecase } from "./AddAccountUseCase";
+import { addAccount, AddAccount } from "./AddAccountUseCase";
 
 describe("addAccount", () => {
-    let testInstance: addAccount;
+    let testInstance: AddAccount;
     let addAccountRepository: MockProxy<AddAccountRepository>;
 
     beforeAll(async () => {
@@ -17,7 +17,7 @@ describe("addAccount", () => {
     });
 
     beforeEach(() => {
-        testInstance = addAccountUsecase(addAccountRepository);
+        testInstance = addAccount(addAccountRepository);
     });
 
     afterAll(async () => {

@@ -21,7 +21,7 @@ describe("loadServiceByPage", () => {
             options: {},
         };
 
-        loadServiceRepository.loadByPage.mockResolvedValue(serviceEntityPaginatedMock);
+        loadServiceRepository.loadServiceByPage.mockResolvedValue(serviceEntityPaginatedMock);
     });
 
     beforeEach(() => {
@@ -35,9 +35,9 @@ describe("loadServiceByPage", () => {
     it("should call loadServiceByPage of loadServiceRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(loadServiceRepository.loadByPage).toHaveBeenCalledWith(fakeQuery);
+        expect(loadServiceRepository.loadServiceByPage).toHaveBeenCalledWith(fakeQuery);
 
-        expect(loadServiceRepository.loadByPage).toHaveBeenCalledTimes(1);
+        expect(loadServiceRepository.loadServiceByPage).toHaveBeenCalledTimes(1);
     });
 
     it("should return a service when loadServiceRepository loads it", async () => {
@@ -47,7 +47,7 @@ describe("loadServiceByPage", () => {
     });
 
     it("should return null when loadServiceRepository fails to load", async () => {
-        loadServiceRepository.loadByPage.mockResolvedValue(null);
+        loadServiceRepository.loadServiceByPage.mockResolvedValue(null);
 
         const service = await testInstance(fakeQuery);
 
@@ -55,7 +55,7 @@ describe("loadServiceByPage", () => {
     });
 
     it("should throw an error when loadServiceRepository throws an error", async () => {
-        loadServiceRepository.loadByPage.mockRejectedValue(new Error("Error"));
+        loadServiceRepository.loadServiceByPage.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

@@ -3,11 +3,11 @@ import { userEntityPaginatedMock } from "@/slices/user/entities/UserEntity.spec"
 import { LoadUserByPageRepository } from "@/slices/user/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadUserByPage, loadUserByPageUsecase } from "./LoadUserByPageUseCase";
+import { LoadUserByPage, loadUserByPage } from "./LoadUserByPageUseCase";
 
 describe("loadUserByPage", () => {
     let fakeQuery: Query;
-    let testInstance: loadUserByPage;
+    let testInstance: LoadUserByPage;
     let loadUserRepository: MockProxy<LoadUserByPageRepository>;
 
     beforeAll(async () => {
@@ -21,11 +21,11 @@ describe("loadUserByPage", () => {
             options: {},
         };
 
-        loadUserRepository.loadByPage.mockResolvedValue(userEntityPaginatedMock);
+        loadUserRepository.loadUserByPage.mockResolvedValue(userEntityPaginatedMock);
     });
 
     beforeEach(() => {
-        testInstance = loadUserByPageUsecase(loadUserRepository);
+        testInstance = loadUserByPage(loadUserRepository);
     });
 
     afterAll(async () => {
@@ -35,9 +35,9 @@ describe("loadUserByPage", () => {
     it("should call loadUserByPage of loadUserRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(loadUserRepository.loadByPage).toHaveBeenCalledWith(fakeQuery);
+        expect(loadUserRepository.loadUserByPage).toHaveBeenCalledWith(fakeQuery);
 
-        expect(loadUserRepository.loadByPage).toHaveBeenCalledTimes(1);
+        expect(loadUserRepository.loadUserByPage).toHaveBeenCalledTimes(1);
     });
 
     it("should return a user when loadUserRepository loads it", async () => {
@@ -47,7 +47,7 @@ describe("loadUserByPage", () => {
     });
 
     it("should return null when loadUserRepository fails to load", async () => {
-        loadUserRepository.loadByPage.mockResolvedValue(null);
+        loadUserRepository.loadUserByPage.mockResolvedValue(null);
 
         const user = await testInstance(fakeQuery);
 
@@ -55,7 +55,7 @@ describe("loadUserByPage", () => {
     });
 
     it("should throw an error when loadUserRepository throws an error", async () => {
-        loadUserRepository.loadByPage.mockRejectedValue(new Error("Error"));
+        loadUserRepository.loadUserByPage.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

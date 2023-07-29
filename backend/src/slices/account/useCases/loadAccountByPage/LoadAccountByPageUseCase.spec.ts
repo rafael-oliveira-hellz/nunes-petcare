@@ -3,11 +3,11 @@ import { accountEntityPaginatedMock } from "@/slices/account/entities/AccountEnt
 import { LoadAccountByPageRepository } from "@/slices/account/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadAccountByPage, loadAccountByPageUsecase } from "./LoadAccountByPageUseCase";
+import { loadAccountByPage, LoadAccountByPage } from "./LoadAccountByPageUseCase";
 
 describe("loadAccountByPage", () => {
     let fakeQuery: Query;
-    let testInstance: loadAccountByPage;
+    let testInstance: LoadAccountByPage;
     let loadAccountRepository: MockProxy<LoadAccountByPageRepository>;
 
     beforeAll(async () => {
@@ -21,11 +21,11 @@ describe("loadAccountByPage", () => {
             options: {},
         };
 
-        loadAccountRepository.loadByPage.mockResolvedValue(accountEntityPaginatedMock);
+        loadAccountRepository.loadAccountByPage.mockResolvedValue(accountEntityPaginatedMock);
     });
 
     beforeEach(() => {
-        testInstance = loadAccountByPageUsecase(loadAccountRepository);
+        testInstance = loadAccountByPage(loadAccountRepository);
     });
 
     afterAll(async () => {
@@ -35,9 +35,9 @@ describe("loadAccountByPage", () => {
     it("should call loadAccountByPage of loadAccountRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(loadAccountRepository.loadByPage).toHaveBeenCalledWith(fakeQuery);
+        expect(loadAccountRepository.loadAccountByPage).toHaveBeenCalledWith(fakeQuery);
 
-        expect(loadAccountRepository.loadByPage).toHaveBeenCalledTimes(1);
+        expect(loadAccountRepository.loadAccountByPage).toHaveBeenCalledTimes(1);
     });
 
     it("should return a account when loadAccountRepository loads it", async () => {
@@ -47,7 +47,7 @@ describe("loadAccountByPage", () => {
     });
 
     it("should return null when loadAccountRepository fails to load", async () => {
-        loadAccountRepository.loadByPage.mockResolvedValue(null);
+        loadAccountRepository.loadAccountByPage.mockResolvedValue(null);
 
         const account = await testInstance(fakeQuery);
 
@@ -55,7 +55,7 @@ describe("loadAccountByPage", () => {
     });
 
     it("should throw an error when loadAccountRepository throws an error", async () => {
-        loadAccountRepository.loadByPage.mockRejectedValue(new Error("Error"));
+        loadAccountRepository.loadAccountByPage.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

@@ -3,11 +3,11 @@ import { userEntityMock } from "@/slices/user/entities/UserEntity.spec";
 import { DeleteUserRepository } from "@/slices/user/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { deleteUser, deleteUserUsecase } from "./DeleteUserUseCase";
+import { DeleteUser, deleteUser } from "./DeleteUserUseCase";
 
 describe("deleteUser", () => {
     let fakeQuery: Query;
-    let testInstance: deleteUser;
+    let testInstance: DeleteUser;
     let deleteUserRepository: MockProxy<DeleteUserRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("deleteUser", () => {
     });
 
     beforeEach(() => {
-        testInstance = deleteUserUsecase(deleteUserRepository);
+        testInstance = deleteUser(deleteUserRepository);
     });
 
     afterAll(async () => {

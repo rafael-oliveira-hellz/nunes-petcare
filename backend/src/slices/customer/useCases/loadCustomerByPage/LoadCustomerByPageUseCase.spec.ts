@@ -3,11 +3,11 @@ import { customerEntityPaginatedMock } from "@/slices/customer/entities/Customer
 import { LoadCustomerByPageRepository } from "@/slices/customer/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadCustomerByPage, loadCustomerByPageUsecase } from "./LoadCustomerByPageUseCase";
+import { loadCustomerByPage, LoadCustomerByPage } from "./LoadCustomerByPageUseCase";
 
 describe("loadCustomerByPage", () => {
     let fakeQuery: Query;
-    let testInstance: loadCustomerByPage;
+    let testInstance: LoadCustomerByPage;
     let loadCustomerRepository: MockProxy<LoadCustomerByPageRepository>;
 
     beforeAll(async () => {
@@ -21,11 +21,11 @@ describe("loadCustomerByPage", () => {
             options: {},
         };
 
-        loadCustomerRepository.loadByPage.mockResolvedValue(customerEntityPaginatedMock);
+        loadCustomerRepository.loadCustomerByPage.mockResolvedValue(customerEntityPaginatedMock);
     });
 
     beforeEach(() => {
-        testInstance = loadCustomerByPageUsecase(loadCustomerRepository);
+        testInstance = loadCustomerByPage(loadCustomerRepository);
     });
 
     afterAll(async () => {
@@ -35,9 +35,9 @@ describe("loadCustomerByPage", () => {
     it("should call loadCustomerByPage of loadCustomerRepository with correct values", async () => {
         await testInstance(fakeQuery);
 
-        expect(loadCustomerRepository.loadByPage).toHaveBeenCalledWith(fakeQuery);
+        expect(loadCustomerRepository.loadCustomerByPage).toHaveBeenCalledWith(fakeQuery);
 
-        expect(loadCustomerRepository.loadByPage).toHaveBeenCalledTimes(1);
+        expect(loadCustomerRepository.loadCustomerByPage).toHaveBeenCalledTimes(1);
     });
 
     it("should return a customer when loadCustomerRepository loads it", async () => {
@@ -47,7 +47,7 @@ describe("loadCustomerByPage", () => {
     });
 
     it("should return null when loadCustomerRepository fails to load", async () => {
-        loadCustomerRepository.loadByPage.mockResolvedValue(null);
+        loadCustomerRepository.loadCustomerByPage.mockResolvedValue(null);
 
         const customer = await testInstance(fakeQuery);
 
@@ -55,7 +55,7 @@ describe("loadCustomerByPage", () => {
     });
 
     it("should throw an error when loadCustomerRepository throws an error", async () => {
-        loadCustomerRepository.loadByPage.mockRejectedValue(new Error("Error"));
+        loadCustomerRepository.loadCustomerByPage.mockRejectedValue(new Error("Error"));
 
         await expect(testInstance(fakeQuery)).rejects.toThrowError("Error");
     });

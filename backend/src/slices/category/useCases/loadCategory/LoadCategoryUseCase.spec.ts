@@ -3,11 +3,11 @@ import { categoryEntityMock } from "@/slices/category/entities/CategoryEntity.sp
 import { LoadCategoryRepository } from "@/slices/category/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { loadCategory, loadCategoryUsecase } from "./LoadCategoryUseCase";
+import { loadCategory, LoadCategory } from "./LoadCategoryUseCase";
 
 describe("loadCategory", () => {
     let fakeQuery: Query;
-    let testInstance: loadCategory;
+    let testInstance: LoadCategory;
     let loadCategoryRepository: MockProxy<LoadCategoryRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("loadCategory", () => {
     });
 
     beforeEach(() => {
-        testInstance = loadCategoryUsecase(loadCategoryRepository);
+        testInstance = loadCategory(loadCategoryRepository);
     });
 
     afterAll(async () => {

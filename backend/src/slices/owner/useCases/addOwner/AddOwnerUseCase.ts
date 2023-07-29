@@ -1,11 +1,9 @@
-import { OwnerData, OwnerEntity } from "@/slices/owner/entities";
 import { AddOwnerRepository } from "@/slices/owner/repositories";
+import { OwnerEntity, OwnerData } from "@/slices/owner/entities";
 
-export type addOwner = (data: OwnerData) => Promise<OwnerEntity | null>;
-
-export type addOwnerSignature = (addOwner: AddOwnerRepository) => addOwner;
-
-export const addOwnerUsecase: addOwnerSignature =
-    (addOwner: AddOwnerRepository) => (data: OwnerData) => {
-        return addOwner.addOwner(new OwnerEntity(data));
+export type AddOwner = (data: OwnerData) => Promise<OwnerEntity | null>;
+export type AddOwnerSignature = (addOwner: AddOwnerRepository) => AddOwner;
+export const addOwner: AddOwnerSignature =
+    (addOwnerRepository: AddOwnerRepository) => (data: OwnerData) => {
+        return addOwnerRepository.addOwner(new OwnerEntity(data));
     };

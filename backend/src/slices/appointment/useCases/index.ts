@@ -3,3 +3,4 @@ export * from "./loadAppointment";
 export * from "./loadAppointmentByPage";
 export * from "./deleteAppointment";
 export * from "./updateAppointment";
+export * from "./loadAvailableTimes";

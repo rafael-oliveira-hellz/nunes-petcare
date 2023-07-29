@@ -3,11 +3,11 @@ import { customerEntityMock } from "@/slices/customer/entities/CustomerEntity.sp
 import { DeleteCustomerRepository } from "@/slices/customer/repositories";
 import { mock, MockProxy } from "jest-mock-extended";
 import MockDate from "mockdate";
-import { deleteCustomer, deleteCustomerUsecase } from "./DeleteCustomerUseCase";
+import { deleteCustomer, DeleteCustomer } from "./DeleteCustomerUseCase";
 
 describe("deleteCustomer", () => {
     let fakeQuery: Query;
-    let testInstance: deleteCustomer;
+    let testInstance: DeleteCustomer;
     let deleteCustomerRepository: MockProxy<DeleteCustomerRepository>;
 
     beforeAll(async () => {
@@ -25,7 +25,7 @@ describe("deleteCustomer", () => {
     });
 
     beforeEach(() => {
-        testInstance = deleteCustomerUsecase(deleteCustomerRepository);
+        testInstance = deleteCustomer(deleteCustomerRepository);
     });
 
     afterAll(async () => {

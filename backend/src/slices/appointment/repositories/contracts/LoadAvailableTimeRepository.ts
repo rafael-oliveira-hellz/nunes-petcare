@@ -1,10 +1,10 @@
 import {
     AvailableTimesModelRepository,
-    QueryAvailableTimesModelRepository,
+    QueryAvailableTimesRepository,
 } from "@/slices/appointment/entities";
 
-export interface LoadAvailableTimeRepository {
-    loadAppointment: (
-        query: QueryAvailableTimesModelRepository,
+export interface LoadAvailableTimesRepository {
+    loadAvailableTimes: (
+        query: QueryAvailableTimesRepository,
     ) => Promise<AvailableTimesModelRepository | null>;
 }
