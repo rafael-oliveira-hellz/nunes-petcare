@@ -37,5 +37,14 @@
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/no-explicit-any": "off"
     },
-    "ignorePatterns": ["node_modules", "dist", "generators", "coverage"]
+    "ignorePatterns": [
+        "node_modules",
+        "dist",
+        "generators",
+        "coverage",
+        "jest-all-config.js",
+        "jest-db-config.js",
+        "jest-mongodb-config.js",
+        "jest-test-config.js"
+    ]
 }

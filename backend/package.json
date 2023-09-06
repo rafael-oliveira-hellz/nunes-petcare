@@ -10,6 +10,7 @@
         "test:t": "jest --passWithNoTests --silent --noStackTrace --runInBand --forceExit  -c jest-test-config.js",
         "test": "jest --passWithNoTests --silent --forceExit --detectOpenHandles --noStackTrace --runInBand",
         "test:v": "jest --passWithNoTests --forceExit --noStackTrace --runInBand",
+        "test:coverage": "jest --runInBand",
         "clean": "rimraf dist",
         "build": "npm run clean && tsc",
         "start": "node -r dotenv/config dist",

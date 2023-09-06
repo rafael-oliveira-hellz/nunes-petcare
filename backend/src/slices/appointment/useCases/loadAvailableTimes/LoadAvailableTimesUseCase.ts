@@ -101,6 +101,7 @@ export const loadAvailableTimes: LoadAvailableTimesSignature =
                         hourStart3,
                         days3,
                     };
+
                     return getArrayTimes({
                         infoOwner: infoOwnerAux,
                         appointments: [],
