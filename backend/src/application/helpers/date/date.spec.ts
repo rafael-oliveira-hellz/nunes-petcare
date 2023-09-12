@@ -12,8 +12,10 @@ import {
     getDateWithCustomHourAndMinutes,
     getHoursObject,
     mapBusinessHours,
+    queryDateGenerator,
     secondStep,
 } from "./date";
+import { endOfDay, formatISO, startOfDay } from "date-fns";
 
 describe("date tests business rules", () => {
     let mockHoursObject: GetHoursObjectInput;
@@ -1114,5 +1116,16 @@ describe("date tests business rules", () => {
                 },
             ],
         });
+    });
+    it("should works when date is not today and not before today", () => {
+        const date = new Date();
+        date.setDate(date.getDate() + 1); // define a data para amanhã
+
+        const result: any = queryDateGenerator(date.toISOString());
+
+        expect(result).not.toBeNull();
+        expect(result.dateQuery).toEqual(startOfDay(date));
+        expect(result.initDay).toEqual(formatISO(startOfDay(date)));
+        expect(result.endDay).toEqual(formatISO(endOfDay(date)));
     });
 });
