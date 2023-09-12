@@ -1,6 +1,6 @@
 import {
-    fakeAccountEntity,
-    fakeAccountPaginated,
+    accountEntityMock,
+    accountEntityPaginatedMock,
 } from "@/slices/account/entities/AccountEntity.spec";
 import { Repository } from "@/application/infra/contracts/repository";
 import { Query } from "@/application/types";
@@ -16,11 +16,11 @@ describe("Account Mongo Repository", () => {
         fakeQuery = { fields: { name: "123" }, options: {} };
         MockDate.set(new Date());
         repository = mock<Repository>();
-        repository.add.mockResolvedValue(fakeAccountEntity);
-        repository.getOne.mockResolvedValue(fakeAccountEntity);
-        repository.update.mockResolvedValue(fakeAccountEntity);
-        repository.getPaginate.mockResolvedValue(fakeAccountPaginated?.accounts);
-        repository.getCount.mockResolvedValue(fakeAccountPaginated?.total);
+        repository.add.mockResolvedValue(accountEntityMock);
+        repository.getOne.mockResolvedValue(accountEntityMock);
+        repository.update.mockResolvedValue(accountEntityMock);
+        repository.getPaginate.mockResolvedValue(accountEntityPaginatedMock?.accounts);
+        repository.getCount.mockResolvedValue(accountEntityPaginatedMock?.total);
         repository.deleteMany.mockResolvedValue(true);
     });
     beforeEach(async () => {
@@ -30,50 +30,50 @@ describe("Account Mongo Repository", () => {
         MockDate.reset();
     });
     test("should call add of addAccount with correct values", async () => {
-        await testInstance.addAccount(fakeAccountEntity);
-        expect(repository.add).toHaveBeenCalledWith(fakeAccountEntity);
+        await testInstance.addAccount(accountEntityMock);
+        expect(repository.add).toHaveBeenCalledWith(accountEntityMock);
         expect(repository.add).toHaveBeenCalledTimes(1);
     });
     test("should return a new account created when addAccount insert it", async () => {
-        const result = await testInstance.addAccount(fakeAccountEntity);
-        expect(result).toEqual(fakeAccountEntity);
+        const result = await testInstance.addAccount(accountEntityMock);
+        expect(result).toEqual(accountEntityMock);
     });
     test("should return null when addAccount returns null", async () => {
         repository.add.mockResolvedValueOnce(null);
-        const result = await testInstance.addAccount(fakeAccountEntity);
+        const result = await testInstance.addAccount(accountEntityMock);
         expect(result).toBeNull();
     });
     test("should rethrow if add of addAccount throws", async () => {
         repository.add.mockRejectedValueOnce(new Error("Error"));
-        const result = testInstance.addAccount(fakeAccountEntity);
+        const result = testInstance.addAccount(accountEntityMock);
         await expect(result).rejects.toThrow("Error");
     });
     test("should rethrow if update of updateAccount throws", async () => {
         repository.update.mockRejectedValueOnce(new Error("Error"));
-        const result = testInstance.updateAccount(fakeQuery, fakeAccountEntity);
+        const result = testInstance.updateAccount(fakeQuery, accountEntityMock);
         await expect(result).rejects.toThrow("Error");
     });
     test("should call update of updateAccount with correct values", async () => {
-        await testInstance.updateAccount(fakeQuery, fakeAccountEntity);
-        expect(repository.update).toHaveBeenCalledWith(fakeQuery?.fields, fakeAccountEntity);
+        await testInstance.updateAccount(fakeQuery, accountEntityMock);
+        expect(repository.update).toHaveBeenCalledWith(fakeQuery?.fields, accountEntityMock);
         expect(repository.update).toHaveBeenCalledTimes(1);
     });
     test("should return a account updated when updateAccount update it", async () => {
-        const result = await testInstance.updateAccount(fakeQuery, fakeAccountEntity);
-        expect(result).toEqual(fakeAccountEntity);
+        const result = await testInstance.updateAccount(fakeQuery, accountEntityMock);
+        expect(result).toEqual(accountEntityMock);
     });
     test("should return a account updated when updateAccount update it when i pass null", async () => {
-        const result = await testInstance.updateAccount(null as any, fakeAccountEntity);
-        expect(result).toEqual(fakeAccountEntity);
+        const result = await testInstance.updateAccount(null as any, accountEntityMock);
+        expect(result).toEqual(accountEntityMock);
     });
     test("should return null when updateAccount returns null", async () => {
         repository.update.mockResolvedValueOnce(null);
-        const result = await testInstance.updateAccount(fakeQuery, fakeAccountEntity);
+        const result = await testInstance.updateAccount(fakeQuery, accountEntityMock);
         expect(result).toBeNull();
     });
     test("should rethrow if update of updateAccount throws", async () => {
         repository.update.mockRejectedValueOnce(new Error("Error"));
-        const result = testInstance.updateAccount(fakeQuery, fakeAccountEntity);
+        const result = testInstance.updateAccount(fakeQuery, accountEntityMock);
         await expect(result).rejects.toThrow("Error");
     });
     test("should call delete of deleteAccount with correct values", async () => {
@@ -102,7 +102,7 @@ describe("Account Mongo Repository", () => {
     });
     test("should return a account when loadAccount loaded it", async () => {
         const result = await testInstance.loadAccount(fakeQuery);
-        expect(result).toEqual(fakeAccountEntity);
+        expect(result).toEqual(accountEntityMock);
     });
     test("should return null when loadAccount returns null", async () => {
         repository.getOne.mockResolvedValueOnce(null);
@@ -139,7 +139,7 @@ describe("Account Mongo Repository", () => {
     });
     test("should return a accountByPage when loadAccountByPage loaded it", async () => {
         const result = await testInstance.loadAccountByPage(fakeQuery);
-        expect(result).toEqual(fakeAccountPaginated);
+        expect(result).toEqual(accountEntityPaginatedMock);
     });
     test("should return null when loadAccountByPage returns null", async () => {
         repository.getPaginate.mockResolvedValueOnce(null);
